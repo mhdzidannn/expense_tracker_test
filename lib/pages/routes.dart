@@ -1,4 +1,4 @@
-import 'package:expense_tracker_test/pages/home_page.dart';
+import 'package:expense_tracker_test/pages/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -6,9 +6,9 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
 GoRouter createRouter() {
   return GoRouter(
-    initialLocation: Routes.home._path,
+    initialLocation: Routes.main._path,
     navigatorKey: _rootNavigatorKey,
-    routes: [_rootRoute(route: Routes.home, builder: (context, state) => const HomePage())],
+    routes: [_rootRoute(route: Routes.main, builder: (context, state) => const HomePage())],
   );
 }
 
@@ -29,7 +29,7 @@ GoRoute _rootRoute({
 );
 
 enum Routes implements Comparable<Routes> {
-  home(path: "/home", name: "home");
+  main(path: "/main", name: "main");
 
   const Routes({required String path, required String name}) : _path = path, _name = name;
 

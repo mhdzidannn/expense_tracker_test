@@ -2,10 +2,12 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:expense_tracker_test/network/expenses/dto/expense_categories_dto.dart';
-import 'package:expense_tracker_test/network/result.dart';
+import 'package:expense_tracker_test/repository/expenses/dto/expense_categories_dto.dart';
+import 'package:expense_tracker_test/repository/result.dart';
 import 'package:http/http.dart' as http;
+import 'package:injectable/injectable.dart';
 
+@lazySingleton
 class ExpenseRepository {
   Future<RepoResult<List<ExpenseCategoriesDto>>> fetchExpenseCategories() async {
     try {

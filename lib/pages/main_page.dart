@@ -1,5 +1,4 @@
-import 'dart:math';
-
+import 'package:expense_tracker_test/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -10,6 +9,8 @@ class HomePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final selectedIndex = useState(0);
+
+    // final state = useBlocBuilder<ThemeCubit, ThemeData>();
 
     return Scaffold(
       appBar: AppBar(title: Text('Expense Tracker')),
@@ -28,17 +29,7 @@ class HomePage extends HookWidget {
         child: Container(
           width: 60,
           height: 60,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            gradient: LinearGradient(
-              colors: [
-                Theme.of(context).colorScheme.tertiary,
-                Theme.of(context).colorScheme.secondary,
-                Theme.of(context).colorScheme.primary,
-              ],
-              transform: const GradientRotation(pi / 4),
-            ),
-          ),
+          decoration: BoxDecoration(shape: BoxShape.circle, color: Theme.of(context).colorScheme.secondary),
           child: const Icon(CupertinoIcons.add),
         ),
       ),
@@ -47,8 +38,8 @@ class HomePage extends HookWidget {
         currentIndex: selectedIndex.value,
         onTap: (index) => selectedIndex.value = index,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+          BottomNavigationBarItem(icon: Icon(Icons.bar_chart), label: Tr.current.stats),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: Tr.current.settings),
         ],
       ),
     );

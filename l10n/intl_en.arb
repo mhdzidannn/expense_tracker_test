@@ -1,1 +1,7 @@
-{}
+{
+  "@@locale": "en",
+  "expenseTracker": "Expense Tracker",
+  "home": "Home",
+  "stats": "Stats",
+  "settings": "Settings"
+}

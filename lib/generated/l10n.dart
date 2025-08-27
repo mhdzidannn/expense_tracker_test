@@ -54,6 +54,31 @@ class Tr {
   static Tr? maybeOf(BuildContext context) {
     return Localizations.of<Tr>(context, Tr);
   }
+
+  /// `Expense Tracker`
+  String get expenseTracker {
+    return Intl.message(
+      'Expense Tracker',
+      name: 'expenseTracker',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Home`
+  String get home {
+    return Intl.message('Home', name: 'home', desc: '', args: []);
+  }
+
+  /// `Stats`
+  String get stats {
+    return Intl.message('Stats', name: 'stats', desc: '', args: []);
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message('Settings', name: 'settings', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Tr> {
