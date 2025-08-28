@@ -5,6 +5,7 @@ part 'expense_categories_dto.g.dart';
 
 @freezed
 abstract class ExpenseCategoriesDto with _$ExpenseCategoriesDto {
+  @JsonSerializable(explicitToJson: true)
   const factory ExpenseCategoriesDto({
     required String name,
     double? recommendedPercentage,

@@ -20,19 +20,19 @@ _SettingsState _$SettingsStateFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$SettingsStateToJson(_SettingsState instance) =>
     <String, dynamic>{
       'expensesCategories': instance.expensesCategories,
-      'selectedCurrency': _$CurrencyEnumMap[instance.selectedCurrency]!,
+      'selectedCurrency': instance.selectedCurrency,
       'monthlyBudget': instance.monthlyBudget,
     };
 
 const _$CurrencyEnumMap = {
-  Currency.usd: 'usd',
-  Currency.eur: 'eur',
-  Currency.gbp: 'gbp',
-  Currency.jpy: 'jpy',
-  Currency.cny: 'cny',
-  Currency.inr: 'inr',
-  Currency.myr: 'myr',
-  Currency.aud: 'aud',
-  Currency.cad: 'cad',
-  Currency.sgd: 'sgd',
+  Currency.usd: 'USD',
+  Currency.eur: 'EUR',
+  Currency.gbp: 'JPY',
+  Currency.jpy: 'JPY',
+  Currency.cny: 'CNY',
+  Currency.inr: 'INR',
+  Currency.myr: 'MYR',
+  Currency.aud: 'AUD',
+  Currency.cad: 'CAD',
+  Currency.sgd: 'SGD',
 };

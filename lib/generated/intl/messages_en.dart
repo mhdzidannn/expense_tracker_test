@@ -49,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "setYourBudget": MessageLookupByLibrary.simpleMessage("Set your budget"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "stats": MessageLookupByLibrary.simpleMessage("Stats"),
+    "submit": MessageLookupByLibrary.simpleMessage("Submit"),
     "sync": MessageLookupByLibrary.simpleMessage("Sync"),
     "update": MessageLookupByLibrary.simpleMessage("Update"),
     "yourExpenses": MessageLookupByLibrary.simpleMessage("Your Expenses"),

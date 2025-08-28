@@ -29,6 +29,7 @@ class AddExpensePage extends HookWidget {
     useEffect(() {
       dateController.text = DateFormat('dd/MM/yyyy').format(DateTime.now());
       context.read<ExpensesCubit>().updateDate(DateTime.now());
+      context.read<ExpensesCubit>().updateCurrency(settingState.selectedCurrency);
       return null;
     }, []);
 
@@ -65,9 +66,9 @@ class AddExpensePage extends HookWidget {
                           showSearchFunction: true,
                           options: settingState.getCurrencyOptions,
                           title: Tr.current.currency,
-                          value: settingState.selectedCurrency,
+                          value: expenseState.selectedCurrency,
                           onChanged: (value) {
-                            context.read<SettingsCubit>().setCurrency(currency: value.value);
+                            context.read<ExpensesCubit>().updateCurrency(value.value);
                           },
                         );
                       },
@@ -76,7 +77,7 @@ class AddExpensePage extends HookWidget {
                         children: [
                           SizedBox(width: 10),
                           const Icon(Icons.price_change, size: 16, color: Colors.grey),
-                          Text(' ${settingState.selectedCurrency.symbol} '),
+                          Text(' ${expenseState.selectedCurrency?.symbol} '),
                         ],
                       ),
                     ),
@@ -115,7 +116,7 @@ class AddExpensePage extends HookWidget {
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
-                    labelText: 'Expense Name',
+                    labelText: 'Notes',
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(15), borderSide: BorderSide.none),
                     errorText: expenseState.expensesNameError,
                   ),
@@ -154,14 +155,14 @@ class AddExpensePage extends HookWidget {
           padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
           child: TextButton(
             onPressed: () {
-              context.read<ExpensesCubit>().onUpdate();
+              context.read<ExpensesCubit>().onSubmit(context: context);
             },
             style: TextButton.styleFrom(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               backgroundColor: Theme.of(context).colorScheme.secondary,
             ),
             child: Text(
-              Tr.current.update,
+              Tr.current.submit,
               style: TextStyle(fontSize: 18.sp, color: Colors.white),
             ),
           ),

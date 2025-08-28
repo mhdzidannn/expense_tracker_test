@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ExpensesState {
 
- ExpenseCategoriesDto? get selectedExpense; String? get selectedExpenseError; Currency? get selectedCurrency; double get amount; String? get amountErrorText; String get expensesName; String? get expensesNameError; DateTime? get selectedDate; bool get isLoading;
+ ExpenseCategoriesDto? get selectedExpense; String? get selectedExpenseError; Currency? get selectedCurrency; double get amount; String? get amountErrorText; String? get expensesName; String? get expensesNameError; DateTime? get selectedDate; bool get isLoading;
 /// Create a copy of ExpensesState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $ExpensesStateCopyWith<$Res>  {
   factory $ExpensesStateCopyWith(ExpensesState value, $Res Function(ExpensesState) _then) = _$ExpensesStateCopyWithImpl;
 @useResult
 $Res call({
- ExpenseCategoriesDto? selectedExpense, String? selectedExpenseError, Currency? selectedCurrency, double amount, String? amountErrorText, String expensesName, String? expensesNameError, DateTime? selectedDate, bool isLoading
+ ExpenseCategoriesDto? selectedExpense, String? selectedExpenseError, Currency? selectedCurrency, double amount, String? amountErrorText, String? expensesName, String? expensesNameError, DateTime? selectedDate, bool isLoading
 });
 
 
@@ -65,15 +65,15 @@ class _$ExpensesStateCopyWithImpl<$Res>
 
 /// Create a copy of ExpensesState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? selectedExpense = freezed,Object? selectedExpenseError = freezed,Object? selectedCurrency = freezed,Object? amount = null,Object? amountErrorText = freezed,Object? expensesName = null,Object? expensesNameError = freezed,Object? selectedDate = freezed,Object? isLoading = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? selectedExpense = freezed,Object? selectedExpenseError = freezed,Object? selectedCurrency = freezed,Object? amount = null,Object? amountErrorText = freezed,Object? expensesName = freezed,Object? expensesNameError = freezed,Object? selectedDate = freezed,Object? isLoading = null,}) {
   return _then(_self.copyWith(
 selectedExpense: freezed == selectedExpense ? _self.selectedExpense : selectedExpense // ignore: cast_nullable_to_non_nullable
 as ExpenseCategoriesDto?,selectedExpenseError: freezed == selectedExpenseError ? _self.selectedExpenseError : selectedExpenseError // ignore: cast_nullable_to_non_nullable
 as String?,selectedCurrency: freezed == selectedCurrency ? _self.selectedCurrency : selectedCurrency // ignore: cast_nullable_to_non_nullable
 as Currency?,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
 as double,amountErrorText: freezed == amountErrorText ? _self.amountErrorText : amountErrorText // ignore: cast_nullable_to_non_nullable
-as String?,expensesName: null == expensesName ? _self.expensesName : expensesName // ignore: cast_nullable_to_non_nullable
-as String,expensesNameError: freezed == expensesNameError ? _self.expensesNameError : expensesNameError // ignore: cast_nullable_to_non_nullable
+as String?,expensesName: freezed == expensesName ? _self.expensesName : expensesName // ignore: cast_nullable_to_non_nullable
+as String?,expensesNameError: freezed == expensesNameError ? _self.expensesNameError : expensesNameError // ignore: cast_nullable_to_non_nullable
 as String?,selectedDate: freezed == selectedDate ? _self.selectedDate : selectedDate // ignore: cast_nullable_to_non_nullable
 as DateTime?,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,
@@ -173,7 +173,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ExpenseCategoriesDto? selectedExpense,  String? selectedExpenseError,  Currency? selectedCurrency,  double amount,  String? amountErrorText,  String expensesName,  String? expensesNameError,  DateTime? selectedDate,  bool isLoading)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( ExpenseCategoriesDto? selectedExpense,  String? selectedExpenseError,  Currency? selectedCurrency,  double amount,  String? amountErrorText,  String? expensesName,  String? expensesNameError,  DateTime? selectedDate,  bool isLoading)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ExpensesState() when $default != null:
 return $default(_that.selectedExpense,_that.selectedExpenseError,_that.selectedCurrency,_that.amount,_that.amountErrorText,_that.expensesName,_that.expensesNameError,_that.selectedDate,_that.isLoading);case _:
@@ -194,7 +194,7 @@ return $default(_that.selectedExpense,_that.selectedExpenseError,_that.selectedC
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ExpenseCategoriesDto? selectedExpense,  String? selectedExpenseError,  Currency? selectedCurrency,  double amount,  String? amountErrorText,  String expensesName,  String? expensesNameError,  DateTime? selectedDate,  bool isLoading)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( ExpenseCategoriesDto? selectedExpense,  String? selectedExpenseError,  Currency? selectedCurrency,  double amount,  String? amountErrorText,  String? expensesName,  String? expensesNameError,  DateTime? selectedDate,  bool isLoading)  $default,) {final _that = this;
 switch (_that) {
 case _ExpensesState():
 return $default(_that.selectedExpense,_that.selectedExpenseError,_that.selectedCurrency,_that.amount,_that.amountErrorText,_that.expensesName,_that.expensesNameError,_that.selectedDate,_that.isLoading);case _:
@@ -214,7 +214,7 @@ return $default(_that.selectedExpense,_that.selectedExpenseError,_that.selectedC
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ExpenseCategoriesDto? selectedExpense,  String? selectedExpenseError,  Currency? selectedCurrency,  double amount,  String? amountErrorText,  String expensesName,  String? expensesNameError,  DateTime? selectedDate,  bool isLoading)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( ExpenseCategoriesDto? selectedExpense,  String? selectedExpenseError,  Currency? selectedCurrency,  double amount,  String? amountErrorText,  String? expensesName,  String? expensesNameError,  DateTime? selectedDate,  bool isLoading)?  $default,) {final _that = this;
 switch (_that) {
 case _ExpensesState() when $default != null:
 return $default(_that.selectedExpense,_that.selectedExpenseError,_that.selectedCurrency,_that.amount,_that.amountErrorText,_that.expensesName,_that.expensesNameError,_that.selectedDate,_that.isLoading);case _:
@@ -229,7 +229,7 @@ return $default(_that.selectedExpense,_that.selectedExpenseError,_that.selectedC
 @JsonSerializable()
 
 class _ExpensesState extends ExpensesState {
-  const _ExpensesState({this.selectedExpense, this.selectedExpenseError, this.selectedCurrency, this.amount = 0.00, this.amountErrorText, this.expensesName = '', this.expensesNameError, this.selectedDate, this.isLoading = false}): super._();
+  const _ExpensesState({this.selectedExpense, this.selectedExpenseError, this.selectedCurrency, this.amount = 0.00, this.amountErrorText, this.expensesName, this.expensesNameError, this.selectedDate, this.isLoading = false}): super._();
   factory _ExpensesState.fromJson(Map<String, dynamic> json) => _$ExpensesStateFromJson(json);
 
 @override final  ExpenseCategoriesDto? selectedExpense;
@@ -237,7 +237,7 @@ class _ExpensesState extends ExpensesState {
 @override final  Currency? selectedCurrency;
 @override@JsonKey() final  double amount;
 @override final  String? amountErrorText;
-@override@JsonKey() final  String expensesName;
+@override final  String? expensesName;
 @override final  String? expensesNameError;
 @override final  DateTime? selectedDate;
 @override@JsonKey() final  bool isLoading;
@@ -275,7 +275,7 @@ abstract mixin class _$ExpensesStateCopyWith<$Res> implements $ExpensesStateCopy
   factory _$ExpensesStateCopyWith(_ExpensesState value, $Res Function(_ExpensesState) _then) = __$ExpensesStateCopyWithImpl;
 @override @useResult
 $Res call({
- ExpenseCategoriesDto? selectedExpense, String? selectedExpenseError, Currency? selectedCurrency, double amount, String? amountErrorText, String expensesName, String? expensesNameError, DateTime? selectedDate, bool isLoading
+ ExpenseCategoriesDto? selectedExpense, String? selectedExpenseError, Currency? selectedCurrency, double amount, String? amountErrorText, String? expensesName, String? expensesNameError, DateTime? selectedDate, bool isLoading
 });
 
 
@@ -292,15 +292,15 @@ class __$ExpensesStateCopyWithImpl<$Res>
 
 /// Create a copy of ExpensesState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? selectedExpense = freezed,Object? selectedExpenseError = freezed,Object? selectedCurrency = freezed,Object? amount = null,Object? amountErrorText = freezed,Object? expensesName = null,Object? expensesNameError = freezed,Object? selectedDate = freezed,Object? isLoading = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? selectedExpense = freezed,Object? selectedExpenseError = freezed,Object? selectedCurrency = freezed,Object? amount = null,Object? amountErrorText = freezed,Object? expensesName = freezed,Object? expensesNameError = freezed,Object? selectedDate = freezed,Object? isLoading = null,}) {
   return _then(_ExpensesState(
 selectedExpense: freezed == selectedExpense ? _self.selectedExpense : selectedExpense // ignore: cast_nullable_to_non_nullable
 as ExpenseCategoriesDto?,selectedExpenseError: freezed == selectedExpenseError ? _self.selectedExpenseError : selectedExpenseError // ignore: cast_nullable_to_non_nullable
 as String?,selectedCurrency: freezed == selectedCurrency ? _self.selectedCurrency : selectedCurrency // ignore: cast_nullable_to_non_nullable
 as Currency?,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
 as double,amountErrorText: freezed == amountErrorText ? _self.amountErrorText : amountErrorText // ignore: cast_nullable_to_non_nullable
-as String?,expensesName: null == expensesName ? _self.expensesName : expensesName // ignore: cast_nullable_to_non_nullable
-as String,expensesNameError: freezed == expensesNameError ? _self.expensesNameError : expensesNameError // ignore: cast_nullable_to_non_nullable
+as String?,expensesName: freezed == expensesName ? _self.expensesName : expensesName // ignore: cast_nullable_to_non_nullable
+as String?,expensesNameError: freezed == expensesNameError ? _self.expensesNameError : expensesNameError // ignore: cast_nullable_to_non_nullable
 as String?,selectedDate: freezed == selectedDate ? _self.selectedDate : selectedDate // ignore: cast_nullable_to_non_nullable
 as DateTime?,isLoading: null == isLoading ? _self.isLoading : isLoading // ignore: cast_nullable_to_non_nullable
 as bool,

@@ -21,5 +21,6 @@
   "search": "Search",
   "update": "Update",
   "invalidName": "Invalid Name",
-  "pleaseSelectCategory": "Please select a category"
+  "pleaseSelectCategory": "Please select a category",
+  "submit" : "Submit"
 }

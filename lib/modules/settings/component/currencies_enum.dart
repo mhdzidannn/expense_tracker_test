@@ -1,13 +1,25 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
+
 enum Currency {
+  @JsonValue("USD")
   usd('USD', '\$', 'United States'),
+  @JsonValue("EUR")
   eur('EUR', '€', 'Eurozone'),
-  gbp('GBP', '£', 'United Kingdom'),
+  @JsonValue("JPY")
+  gbp('JPY', '£', 'United Kingdom'),
+  @JsonValue("JPY")
   jpy('JPY', '¥', 'Japan'),
+  @JsonValue("CNY")
   cny('CNY', '¥', 'China'),
+  @JsonValue("INR")
   inr('INR', '₹', 'India'),
+  @JsonValue("MYR")
   myr('MYR', 'RM', 'Malaysia'),
+  @JsonValue("AUD")
   aud('AUD', 'A\$', 'Australia'),
+  @JsonValue("CAD")
   cad('CAD', 'C\$', 'Canada'),
+  @JsonValue("SGD")
   sgd('SGD', 'S\$', 'Singapore');
 
   final String code;
@@ -24,6 +36,10 @@ enum Currency {
     }
     return amount * rate;
   }
+
+  String toJson() => name;
+
+  static Currency fromJson(String json) => Currency.values.firstWhere((c) => c.name == json);
 }
 
 extension CurrencyEnum on Currency {

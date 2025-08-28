@@ -208,8 +208,8 @@ return $default(_that.name,_that.recommendedPercentage,_that.isFixed);case _:
 }
 
 /// @nodoc
-@JsonSerializable()
 
+@JsonSerializable(explicitToJson: true)
 class _ExpenseCategoriesDto implements ExpenseCategoriesDto {
   const _ExpenseCategoriesDto({required this.name, this.recommendedPercentage, this.isFixed = true});
   factory _ExpenseCategoriesDto.fromJson(Map<String, dynamic> json) => _$ExpenseCategoriesDtoFromJson(json);

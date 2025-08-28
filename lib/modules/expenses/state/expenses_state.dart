@@ -13,7 +13,7 @@ abstract class ExpensesState with _$ExpensesState {
     Currency? selectedCurrency,
     @Default(0.00) double amount,
     String? amountErrorText,
-    @Default('') String expensesName,
+    String? expensesName,
     String? expensesNameError,
     DateTime? selectedDate,
     @Default(false) bool isLoading,
