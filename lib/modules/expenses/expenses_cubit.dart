@@ -57,13 +57,11 @@ class ExpensesCubit extends Cubit<ExpensesState> {
     if (state.amount.isNaN || state.amount.isNegative) {
       emit(state.copyWith(expensesNameError: Tr.current.invalidNumberError));
     }
-    // if (state.expensesName.isEmpty) {
-    //   emit(state.copyWith(expensesNameError: Tr.current.invalidName));
-    // }
     if (state.selectedExpense == null) {
       emit(state.copyWith(selectedExpenseError: Tr.current.pleaseSelectCategory));
     }
-    final hah = await expensesController.addExpense(
+
+    await expensesController.addExpense(
       ExpenseDto(
         id: Ulid().toCanonical(),
         selectedExpense: state.selectedExpense!,
@@ -75,7 +73,7 @@ class ExpensesCubit extends Cubit<ExpensesState> {
         updatedAt: DateTime.now().toUtc(),
       ),
     );
-    print(hah);
+
     emit(state.copyWith(isLoading: false));
     if (context.mounted) context.pop();
   }

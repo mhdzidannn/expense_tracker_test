@@ -161,10 +161,16 @@ class AddExpensePage extends HookWidget {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               backgroundColor: Theme.of(context).colorScheme.secondary,
             ),
-            child: Text(
-              Tr.current.submit,
-              style: TextStyle(fontSize: 18.sp, color: Colors.white),
-            ),
+            child: expenseState.isLoading
+                ? SizedBox(
+                    height: 3.h,
+                    width: 3.h,
+                    child: CircularProgressIndicator(padding: EdgeInsets.all(5)),
+                  )
+                : Text(
+                    Tr.current.submit,
+                    style: TextStyle(fontSize: 18.sp, color: Colors.white),
+                  ),
           ),
         ),
       ),
