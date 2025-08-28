@@ -10,6 +10,7 @@ class ExpensesDatabase extends DatabaseSync with RepositoryMixin {
   @override
   String get collectionName => 'expenses';
 
+  // this is where i sync it to backend if there ever is one
   @override
   Future<bool> sync() async {
     return true;

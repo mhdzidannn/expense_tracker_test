@@ -17,6 +17,7 @@ import 'package:shared_preferences/shared_preferences.dart' as _i460;
 import 'app_module.dart' as _i460;
 import 'components/theme.dart' as _i321;
 import 'database/modules/common_controller.dart' as _i500;
+import 'database/modules/expenses_controller.dart' as _i247;
 import 'database/sync/common_database.dart' as _i446;
 import 'database/sync/expenses_database.dart' as _i446;
 import 'modules/expenses/expenses_cubit.dart' as _i737;
@@ -42,20 +43,22 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i446.ExpensesDatabase>(() => _i446.ExpensesDatabase());
     gh.lazySingleton<_i321.ThemeCubit>(() => _i321.ThemeCubit());
+    gh.factory<_i247.ExpensesController>(
+      () => _i247.ExpensesController(database: gh<_i446.ExpensesDatabase>()),
+    );
     gh.lazySingleton<_i446.CommonDatabase>(
       () => _i446.CommonDatabase(gh<_i385.ExpenseRepository>()),
+    );
+    gh.lazySingleton<_i737.ExpensesCubit>(
+      () => _i737.ExpensesCubit(
+        expensesController: gh<_i247.ExpensesController>(),
+      ),
     );
     gh.factory<_i500.CommonController>(
       () => _i500.CommonController(database: gh<_i446.CommonDatabase>()),
     );
     gh.lazySingleton<_i559.SettingsCubit>(
       () => _i559.SettingsCubit(
-        commonController: gh<_i500.CommonController>(),
-        sharedPreferences: gh<_i460.SharedPreferences>(),
-      ),
-    );
-    gh.lazySingleton<_i737.ExpensesCubit>(
-      () => _i737.ExpensesCubit(
         commonController: gh<_i500.CommonController>(),
         sharedPreferences: gh<_i460.SharedPreferences>(),
       ),
