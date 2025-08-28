@@ -1,16 +1,24 @@
 import 'package:expense_tracker_test/generated/l10n.dart';
+import 'package:expense_tracker_test/misc/hooks.dart';
+import 'package:expense_tracker_test/modules/common_data/common_data_cubit.dart';
+import 'package:expense_tracker_test/modules/common_data/state/common_data_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-class HomePage extends HookWidget {
-  const HomePage({super.key});
+class MainPage extends HookWidget {
+  const MainPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     final selectedIndex = useState(0);
 
-    // final state = useBlocBuilder<ThemeCubit, ThemeData>();
+    final state = useBlocBuilder<CommonDataCubit, CommonDataState>();
+
+    useAsyncEffect(() {
+      context.read<CommonDataCubit>().getExpenseCategories();
+    }, []);
 
     return Scaffold(
       appBar: AppBar(title: Text('Expense Tracker')),

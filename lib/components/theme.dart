@@ -66,7 +66,7 @@ class AppTheme {
         backgroundColor: WidgetStateProperty.all(Colors.white),
         foregroundColor: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.disabled)) {
-            return const Color(0xFF666666).withOpacity(.5);
+            return const Color(0xFF666666).withValues(alpha: .5);
           }
           return Colors.black;
         }),
@@ -77,7 +77,7 @@ class AppTheme {
       style: ButtonStyle(
         foregroundColor: WidgetStateProperty.resolveWith((states) {
           if (states.contains(WidgetState.disabled)) {
-            return const Color(0xFF666666).withOpacity(.5);
+            return const Color(0xFF666666).withValues(alpha: .5);
           }
           return Colors.black;
         }),

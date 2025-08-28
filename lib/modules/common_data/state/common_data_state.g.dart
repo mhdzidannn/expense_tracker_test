@@ -8,10 +8,10 @@ part of 'common_data_state.dart';
 
 _CommonDataState _$CommonDataStateFromJson(Map<String, dynamic> json) =>
     _CommonDataState(
-      expenses: (json['expenses'] as List<dynamic>)
+      expensesCategories: (json['expensesCategories'] as List<dynamic>)
           .map((e) => ExpenseCategoriesDto.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 Map<String, dynamic> _$CommonDataStateToJson(_CommonDataState instance) =>
-    <String, dynamic>{'expenses': instance.expenses};
+    <String, dynamic>{'expensesCategories': instance.expensesCategories};

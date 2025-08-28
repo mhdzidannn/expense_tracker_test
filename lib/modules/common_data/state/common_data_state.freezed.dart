@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CommonDataState {
 
- List<ExpenseCategoriesDto> get expenses;
+ List<ExpenseCategoriesDto> get expensesCategories;
 /// Create a copy of CommonDataState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $CommonDataStateCopyWith<CommonDataState> get copyWith => _$CommonDataStateCopyW
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CommonDataState&&const DeepCollectionEquality().equals(other.expenses, expenses));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CommonDataState&&const DeepCollectionEquality().equals(other.expensesCategories, expensesCategories));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(expenses));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(expensesCategories));
 
 @override
 String toString() {
-  return 'CommonDataState(expenses: $expenses)';
+  return 'CommonDataState(expensesCategories: $expensesCategories)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $CommonDataStateCopyWith<$Res>  {
   factory $CommonDataStateCopyWith(CommonDataState value, $Res Function(CommonDataState) _then) = _$CommonDataStateCopyWithImpl;
 @useResult
 $Res call({
- List<ExpenseCategoriesDto> expenses
+ List<ExpenseCategoriesDto> expensesCategories
 });
 
 
@@ -65,9 +65,9 @@ class _$CommonDataStateCopyWithImpl<$Res>
 
 /// Create a copy of CommonDataState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? expenses = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? expensesCategories = null,}) {
   return _then(_self.copyWith(
-expenses: null == expenses ? _self.expenses : expenses // ignore: cast_nullable_to_non_nullable
+expensesCategories: null == expensesCategories ? _self.expensesCategories : expensesCategories // ignore: cast_nullable_to_non_nullable
 as List<ExpenseCategoriesDto>,
   ));
 }
@@ -153,10 +153,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<ExpenseCategoriesDto> expenses)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<ExpenseCategoriesDto> expensesCategories)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CommonDataState() when $default != null:
-return $default(_that.expenses);case _:
+return $default(_that.expensesCategories);case _:
   return orElse();
 
 }
@@ -174,10 +174,10 @@ return $default(_that.expenses);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<ExpenseCategoriesDto> expenses)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<ExpenseCategoriesDto> expensesCategories)  $default,) {final _that = this;
 switch (_that) {
 case _CommonDataState():
-return $default(_that.expenses);case _:
+return $default(_that.expensesCategories);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -194,10 +194,10 @@ return $default(_that.expenses);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<ExpenseCategoriesDto> expenses)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<ExpenseCategoriesDto> expensesCategories)?  $default,) {final _that = this;
 switch (_that) {
 case _CommonDataState() when $default != null:
-return $default(_that.expenses);case _:
+return $default(_that.expensesCategories);case _:
   return null;
 
 }
@@ -209,14 +209,14 @@ return $default(_that.expenses);case _:
 @JsonSerializable()
 
 class _CommonDataState implements CommonDataState {
-  const _CommonDataState({required final  List<ExpenseCategoriesDto> expenses}): _expenses = expenses;
+  const _CommonDataState({required final  List<ExpenseCategoriesDto> expensesCategories}): _expensesCategories = expensesCategories;
   factory _CommonDataState.fromJson(Map<String, dynamic> json) => _$CommonDataStateFromJson(json);
 
- final  List<ExpenseCategoriesDto> _expenses;
-@override List<ExpenseCategoriesDto> get expenses {
-  if (_expenses is EqualUnmodifiableListView) return _expenses;
+ final  List<ExpenseCategoriesDto> _expensesCategories;
+@override List<ExpenseCategoriesDto> get expensesCategories {
+  if (_expensesCategories is EqualUnmodifiableListView) return _expensesCategories;
   // ignore: implicit_dynamic_type
-  return EqualUnmodifiableListView(_expenses);
+  return EqualUnmodifiableListView(_expensesCategories);
 }
 
 
@@ -233,16 +233,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CommonDataState&&const DeepCollectionEquality().equals(other._expenses, _expenses));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CommonDataState&&const DeepCollectionEquality().equals(other._expensesCategories, _expensesCategories));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_expenses));
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_expensesCategories));
 
 @override
 String toString() {
-  return 'CommonDataState(expenses: $expenses)';
+  return 'CommonDataState(expensesCategories: $expensesCategories)';
 }
 
 
@@ -253,7 +253,7 @@ abstract mixin class _$CommonDataStateCopyWith<$Res> implements $CommonDataState
   factory _$CommonDataStateCopyWith(_CommonDataState value, $Res Function(_CommonDataState) _then) = __$CommonDataStateCopyWithImpl;
 @override @useResult
 $Res call({
- List<ExpenseCategoriesDto> expenses
+ List<ExpenseCategoriesDto> expensesCategories
 });
 
 
@@ -270,9 +270,9 @@ class __$CommonDataStateCopyWithImpl<$Res>
 
 /// Create a copy of CommonDataState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? expenses = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? expensesCategories = null,}) {
   return _then(_CommonDataState(
-expenses: null == expenses ? _self._expenses : expenses // ignore: cast_nullable_to_non_nullable
+expensesCategories: null == expensesCategories ? _self._expensesCategories : expensesCategories // ignore: cast_nullable_to_non_nullable
 as List<ExpenseCategoriesDto>,
   ));
 }

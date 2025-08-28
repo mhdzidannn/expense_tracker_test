@@ -2,13 +2,18 @@ import 'package:expense_tracker_test/pages/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-final _rootNavigatorKey = GlobalKey<NavigatorState>();
+class NavigationalUtil {
+  static final _rootNavigatorKey = GlobalKey<NavigatorState>();
+
+  static GlobalKey<NavigatorState> get rootKey => _rootNavigatorKey;
+  static NavigatorState? get rootState => _rootNavigatorKey.currentState;
+}
 
 GoRouter createRouter() {
   return GoRouter(
     initialLocation: Routes.main._path,
-    navigatorKey: _rootNavigatorKey,
-    routes: [_rootRoute(route: Routes.main, builder: (context, state) => const HomePage())],
+    navigatorKey: NavigationalUtil.rootKey,
+    routes: [_rootRoute(route: Routes.main, builder: (context, state) => const MainPage())],
   );
 }
 
@@ -25,7 +30,7 @@ GoRoute _rootRoute({
   name: route.name,
   pageBuilder: pageBuilder,
   redirect: redirect,
-  parentNavigatorKey: _rootNavigatorKey,
+  parentNavigatorKey: NavigationalUtil.rootKey,
 );
 
 enum Routes implements Comparable<Routes> {

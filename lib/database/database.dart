@@ -1,6 +1,7 @@
 import 'package:expense_tracker_test/database/database_sync.dart' show DatabaseSync;
 import 'package:get_it/get_it.dart';
 import 'package:sembast/sembast.dart';
+// ignore: implementation_imports
 import 'package:sembast/src/type.dart';
 
 abstract class Repository {

@@ -6,7 +6,7 @@ part 'common_data_state.g.dart';
 
 @freezed
 abstract class CommonDataState with _$CommonDataState {
-  const factory CommonDataState({required List<ExpenseCategoriesDto> expenses}) = _CommonDataState;
+  const factory CommonDataState({required List<ExpenseCategoriesDto> expensesCategories}) = _CommonDataState;
 
   factory CommonDataState.fromJson(Map<String, dynamic> json) => _$CommonDataStateFromJson(json);
 }

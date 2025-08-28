@@ -9,7 +9,7 @@ import 'package:injectable/injectable.dart';
 
 @lazySingleton
 class ExpenseRepository {
-  Future<RepoResult<List<ExpenseCategoriesDto>>> fetchExpenseCategories() async {
+  Future<RepoResult> fetchExpenseCategories() async {
     try {
       final response = await http
           .get(Uri.parse('https://media.halogen.my/experiment/mobile/expenseCategories.json'))
@@ -17,8 +17,12 @@ class ExpenseRepository {
 
       if (response.statusCode == 200) {
         try {
-          final data = jsonDecode(response.body) as List<ExpenseCategoriesDto>;
-          return RepoSuccess(data);
+          final decoded = jsonDecode(response.body) as Map<String, dynamic>;
+          final list = (decoded['expenseCategories'] as List<dynamic>)
+              .map((e) => ExpenseCategoriesDto.fromJson(e as Map<String, dynamic>))
+              .toList();
+
+          return RepoSuccess(list);
         } on FormatException {
           return const RepoFailure("Invalid JSON format");
         }

@@ -1,13 +1,13 @@
-sealed class RepoResult<T> {
+sealed class RepoResult {
   const RepoResult();
 }
 
-class RepoSuccess<T> extends RepoResult<T> {
+class RepoSuccess<T> extends RepoResult {
   final T data;
   const RepoSuccess(this.data);
 }
 
-class RepoFailure<T> extends RepoResult<T> {
+class RepoFailure extends RepoResult {
   final String message;
   const RepoFailure(this.message);
 }
