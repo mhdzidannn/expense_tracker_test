@@ -210,8 +210,8 @@ return $default(_that.expensesCategories,_that.selectedCurrency,_that.monthlyBud
 /// @nodoc
 @JsonSerializable()
 
-class _SettingsState implements SettingsState {
-  const _SettingsState({required final  List<ExpenseCategoriesDto> expensesCategories, this.selectedCurrency = Currency.myr, this.monthlyBudget = 0.00}): _expensesCategories = expensesCategories;
+class _SettingsState extends SettingsState {
+  const _SettingsState({required final  List<ExpenseCategoriesDto> expensesCategories, this.selectedCurrency = Currency.myr, this.monthlyBudget = 0.0}): _expensesCategories = expensesCategories,super._();
   factory _SettingsState.fromJson(Map<String, dynamic> json) => _$SettingsStateFromJson(json);
 
  final  List<ExpenseCategoriesDto> _expensesCategories;

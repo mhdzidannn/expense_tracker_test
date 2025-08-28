@@ -12,9 +12,13 @@ class StatsPage extends HookWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          CupertinoSliverNavigationBar(largeTitle: Text(Tr.current.yourExpenses)),
+          CupertinoSliverNavigationBar(heroTag: 'stats', largeTitle: Text(Tr.current.yourExpenses)),
 
           SliverList(delegate: SliverChildListDelegate([Container(height: 100, color: Colors.amber)])),
+
+          SliverList(delegate: SliverChildListDelegate([Container(height: 1200, color: Colors.green)])),
+
+          SliverList(delegate: SliverChildListDelegate([Container(height: 100, color: Colors.red)])),
         ],
       ),
     );

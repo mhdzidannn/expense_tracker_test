@@ -19,6 +19,7 @@ import 'components/theme.dart' as _i321;
 import 'database/modules/common_controller.dart' as _i500;
 import 'database/sync/common_database.dart' as _i446;
 import 'database/sync/expenses_database.dart' as _i446;
+import 'modules/expenses/expenses_cubit.dart' as _i737;
 import 'modules/settings/settings_cubit.dart' as _i559;
 import 'repository/expenses/expense_repository.dart' as _i385;
 
@@ -49,6 +50,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i559.SettingsCubit>(
       () => _i559.SettingsCubit(
+        commonController: gh<_i500.CommonController>(),
+        sharedPreferences: gh<_i460.SharedPreferences>(),
+      ),
+    );
+    gh.lazySingleton<_i737.ExpensesCubit>(
+      () => _i737.ExpensesCubit(
         commonController: gh<_i500.CommonController>(),
         sharedPreferences: gh<_i460.SharedPreferences>(),
       ),

@@ -66,10 +66,15 @@ class BudgetSetDialog extends HookWidget {
                   onPressed: () {
                     final text = textController.text.trim();
                     final value = double.tryParse(text);
-
+                    if (text.contains('-')) {
+                      errorText.value = Tr.current.cannotNegativeNumber;
+                      return;
+                    }
                     if (value == null) {
                       errorText.value = Tr.current.invalidNumberError;
                       return;
+                    } else {
+                      errorText.value = null;
                     }
 
                     context.read<SettingsCubit>().setMonthlyExpenseAndCurrency(

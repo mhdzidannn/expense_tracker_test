@@ -18,7 +18,11 @@ class SettingsPage extends HookWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          CupertinoSliverNavigationBar(largeTitle: Text(Tr.current.expenses), backgroundColor: Colors.white),
+          CupertinoSliverNavigationBar(
+            heroTag: 'settings',
+            largeTitle: Text(Tr.current.expenses),
+            backgroundColor: Colors.white,
+          ),
 
           SliverList(
             delegate: SliverChildListDelegate([

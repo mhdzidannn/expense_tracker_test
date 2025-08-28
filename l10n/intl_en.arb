@@ -5,6 +5,7 @@
   "stats": "Stats",
   "settings": "Settings",
   "expenses" : "Expenses",
+  "addExpense" : "Add your expenses",
   "setExpenseLimit" : "Set Expenses Limit",
   "currentExpense": "Current",
   "sync": "Sync",
@@ -14,5 +15,8 @@
   "amount": "Amount",
   "cancel": "Cancel",
   "invalidNumberError" : "Please enter a valid number",
-  "ok" : "Ok"
+  "cannotNegativeNumber" : "Cannot be negative number",
+  "ok" : "Ok",
+  "noData": "No data available",
+  "search": "Search"
 }

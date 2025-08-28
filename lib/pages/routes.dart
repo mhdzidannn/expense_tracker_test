@@ -1,3 +1,4 @@
+import 'package:expense_tracker_test/pages/add_expenses_page.dart';
 import 'package:expense_tracker_test/pages/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -13,7 +14,10 @@ GoRouter createRouter() {
   return GoRouter(
     initialLocation: Routes.main._path,
     navigatorKey: NavigationalUtil.rootKey,
-    routes: [_rootRoute(route: Routes.main, builder: (context, state) => const MainPage())],
+    routes: [
+      _rootRoute(route: Routes.main, builder: (context, state) => const MainPage()),
+      _rootRoute(route: Routes.addExpenses, builder: (context, state) => const AddExpensePage()),
+    ],
   );
 }
 
@@ -34,7 +38,8 @@ GoRoute _rootRoute({
 );
 
 enum Routes implements Comparable<Routes> {
-  main(path: "/main", name: "main");
+  main(path: "/main", name: "main"),
+  addExpenses(path: "/addExpenses", name: "addExpenses");
 
   const Routes({required String path, required String name}) : _path = path, _name = name;
 

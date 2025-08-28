@@ -85,6 +85,16 @@ class Tr {
     return Intl.message('Expenses', name: 'expenses', desc: '', args: []);
   }
 
+  /// `Add your expenses`
+  String get addExpense {
+    return Intl.message(
+      'Add your expenses',
+      name: 'addExpense',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Set Expenses Limit`
   String get setExpenseLimit {
     return Intl.message(
@@ -150,9 +160,34 @@ class Tr {
     );
   }
 
+  /// `Cannot be negative number`
+  String get cannotNegativeNumber {
+    return Intl.message(
+      'Cannot be negative number',
+      name: 'cannotNegativeNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Ok`
   String get ok {
     return Intl.message('Ok', name: 'ok', desc: '', args: []);
+  }
+
+  /// `No data available`
+  String get noData {
+    return Intl.message(
+      'No data available',
+      name: 'noData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Search`
+  String get search {
+    return Intl.message('Search', name: 'search', desc: '', args: []);
   }
 }
 

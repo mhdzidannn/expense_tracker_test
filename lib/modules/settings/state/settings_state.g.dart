@@ -14,7 +14,7 @@ _SettingsState _$SettingsStateFromJson(Map<String, dynamic> json) =>
       selectedCurrency:
           $enumDecodeNullable(_$CurrencyEnumMap, json['selectedCurrency']) ??
           Currency.myr,
-      monthlyBudget: (json['monthlyBudget'] as num?)?.toDouble() ?? 0.00,
+      monthlyBudget: (json['monthlyBudget'] as num?)?.toDouble() ?? 0.0,
     );
 
 Map<String, dynamic> _$SettingsStateToJson(_SettingsState instance) =>

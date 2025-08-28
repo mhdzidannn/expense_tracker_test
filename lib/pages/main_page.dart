@@ -1,12 +1,14 @@
 import 'package:expense_tracker_test/generated/l10n.dart';
 import 'package:expense_tracker_test/misc/hooks.dart';
 import 'package:expense_tracker_test/modules/settings/settings_cubit.dart';
+import 'package:expense_tracker_test/pages/routes.dart';
 import 'package:expense_tracker_test/pages/settings_page.dart';
 import 'package:expense_tracker_test/pages/stats_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:go_router/go_router.dart';
 
 class MainPage extends HookWidget {
   const MainPage({super.key});
@@ -17,7 +19,7 @@ class MainPage extends HookWidget {
 
     useAsyncEffect(() {
       context.read<SettingsCubit>().initSettings();
-    }, []);
+    }, [selectedIndex]);
 
     return Scaffold(
       body: IndexedStack(index: selectedIndex.value, children: [StatsPage(), SettingsPage()]),
@@ -25,7 +27,9 @@ class MainPage extends HookWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         highlightElevation: 0,
-        onPressed: () {},
+        onPressed: () {
+          context.push(Routes.addExpenses.path);
+        },
         child: Container(
           width: 60,
           height: 60,
