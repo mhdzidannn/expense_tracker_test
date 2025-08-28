@@ -35,6 +35,7 @@ class MyApp extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final routes = useRef(createRouter());
     return OverlaySupport.global(
       child: MultiBlocProvider(
         providers: [
@@ -50,7 +51,7 @@ class MyApp extends HookWidget {
                   builder: (context, child) {
                     return child!;
                   },
-                  routerConfig: createRouter(),
+                  routerConfig: routes.value,
                   debugShowCheckedModeBanner: false,
                   theme: state,
                   themeMode: ThemeMode.system,
