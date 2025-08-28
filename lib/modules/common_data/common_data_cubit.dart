@@ -11,6 +11,7 @@ class CommonDataCubit extends Cubit<CommonDataState> {
   CommonDataCubit({required this.commonController}) : super(CommonDataState(expensesCategories: []));
 
   Future<void> getExpenseCategories() async {
-    await commonController.getExpensesCategories();
+    final categories = await commonController.getExpensesCategories();
+    emit(state.copyWith(expensesCategories: categories));
   }
 }

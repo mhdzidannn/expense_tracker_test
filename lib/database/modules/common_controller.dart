@@ -14,27 +14,15 @@ class CommonController {
     return status;
   }
 
-  // Future<bool> saveExpensesCategories(List<ExpenseCategoriesDto> expenseCategories) async {
-  //   if (expenseCategories.isEmpty) return false;
-
-  //   database.delete();
-  //   final keys = expenseCategories.map((e) => e.name).toList();
-  //   final data = expenseCategories.map((e) => e.toJson()).toList();
-  //   database.inserts(keys: keys, data: data);
-  //   return true;
-  // }
-
   Future<List<ExpenseCategoriesDto>> getExpensesCategories() async {
     final record = await database.find();
     if (record.isEmpty) {
       return [];
     }
-    final lol = record.values.map((e) {
+    return record.values.map((e) {
       final data = e as Map<String, dynamic>;
 
       return ExpenseCategoriesDto.fromJson(data);
     }).toList();
-    print(lol);
-    return lol;
   }
 }
