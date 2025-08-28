@@ -22,9 +22,24 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "amount": MessageLookupByLibrary.simpleMessage("Amount"),
+    "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+    "currency": MessageLookupByLibrary.simpleMessage("Currency"),
+    "currentExpense": MessageLookupByLibrary.simpleMessage("Current"),
     "expenseTracker": MessageLookupByLibrary.simpleMessage("Expense Tracker"),
+    "expenses": MessageLookupByLibrary.simpleMessage("Expenses"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
+    "invalidNumberError": MessageLookupByLibrary.simpleMessage(
+      "Please enter a valid number",
+    ),
+    "ok": MessageLookupByLibrary.simpleMessage("Ok"),
+    "setExpenseLimit": MessageLookupByLibrary.simpleMessage(
+      "Set Expenses Limit",
+    ),
+    "setYourBudget": MessageLookupByLibrary.simpleMessage("Set your budget"),
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "stats": MessageLookupByLibrary.simpleMessage("Stats"),
+    "sync": MessageLookupByLibrary.simpleMessage("Sync"),
+    "yourExpenses": MessageLookupByLibrary.simpleMessage("Your Expenses"),
   };
 }

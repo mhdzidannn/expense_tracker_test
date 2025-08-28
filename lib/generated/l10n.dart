@@ -79,6 +79,81 @@ class Tr {
   String get settings {
     return Intl.message('Settings', name: 'settings', desc: '', args: []);
   }
+
+  /// `Expenses`
+  String get expenses {
+    return Intl.message('Expenses', name: 'expenses', desc: '', args: []);
+  }
+
+  /// `Set Expenses Limit`
+  String get setExpenseLimit {
+    return Intl.message(
+      'Set Expenses Limit',
+      name: 'setExpenseLimit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current`
+  String get currentExpense {
+    return Intl.message('Current', name: 'currentExpense', desc: '', args: []);
+  }
+
+  /// `Sync`
+  String get sync {
+    return Intl.message('Sync', name: 'sync', desc: '', args: []);
+  }
+
+  /// `Your Expenses`
+  String get yourExpenses {
+    return Intl.message(
+      'Your Expenses',
+      name: 'yourExpenses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Currency`
+  String get currency {
+    return Intl.message('Currency', name: 'currency', desc: '', args: []);
+  }
+
+  /// `Set your budget`
+  String get setYourBudget {
+    return Intl.message(
+      'Set your budget',
+      name: 'setYourBudget',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amount`
+  String get amount {
+    return Intl.message('Amount', name: 'amount', desc: '', args: []);
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message('Cancel', name: 'cancel', desc: '', args: []);
+  }
+
+  /// `Please enter a valid number`
+  String get invalidNumberError {
+    return Intl.message(
+      'Please enter a valid number',
+      name: 'invalidNumberError',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ok`
+  String get ok {
+    return Intl.message('Ok', name: 'ok', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Tr> {

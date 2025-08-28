@@ -1,3 +1,4 @@
+import 'package:expense_tracker_test/generated/l10n.dart';
 import 'package:expense_tracker_test/misc/hooks.dart';
 import 'package:expense_tracker_test/modules/settings/component/currencies_enum.dart';
 import 'package:expense_tracker_test/modules/settings/settings_cubit.dart';
@@ -32,13 +33,13 @@ class BudgetSetDialog extends HookWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text("Set your budget", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            Text(Tr.current.setYourBudget, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             const SizedBox(height: 16),
             DropdownButtonFormField<Currency>(
               value: selectedCurrency.value,
               items: Currency.values.map((c) => DropdownMenuItem(value: c, child: Text(c.code))).toList(),
               onChanged: (val) => selectedCurrency.value = val!,
-              decoration: const InputDecoration(labelText: "Currency", border: OutlineInputBorder()),
+              decoration: InputDecoration(labelText: Tr.current.currency, border: OutlineInputBorder()),
             ),
             const SizedBox(height: 12),
 
@@ -46,7 +47,7 @@ class BudgetSetDialog extends HookWidget {
               controller: textController,
               keyboardType: const TextInputType.numberWithOptions(decimal: true),
               decoration: InputDecoration(
-                labelText: "Amount",
+                labelText: Tr.current.amount,
                 border: const OutlineInputBorder(),
                 errorText: errorText.value,
               ),
@@ -56,7 +57,7 @@ class BudgetSetDialog extends HookWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                TextButton(onPressed: () => Navigator.of(context).pop(), child: const Text("Cancel")),
+                TextButton(onPressed: () => Navigator.of(context).pop(), child: Text(Tr.current.cancel)),
                 const SizedBox(width: 8),
                 TextButton(
                   style: ElevatedButton.styleFrom(
@@ -67,7 +68,7 @@ class BudgetSetDialog extends HookWidget {
                     final value = double.tryParse(text);
 
                     if (value == null) {
-                      errorText.value = "Please enter a valid number";
+                      errorText.value = Tr.current.invalidNumberError;
                       return;
                     }
 
@@ -77,7 +78,7 @@ class BudgetSetDialog extends HookWidget {
                     );
                     Navigator.of(context).pop();
                   },
-                  child: const Text("OK", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  child: Text(Tr.current.ok.toUpperCase(), style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                 ),
               ],
             ),

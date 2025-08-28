@@ -3,5 +3,16 @@
   "expenseTracker": "Expense Tracker",
   "home": "Home",
   "stats": "Stats",
-  "settings": "Settings"
+  "settings": "Settings",
+  "expenses" : "Expenses",
+  "setExpenseLimit" : "Set Expenses Limit",
+  "currentExpense": "Current",
+  "sync": "Sync",
+  "yourExpenses": "Your Expenses",
+  "currency": "Currency",
+  "setYourBudget": "Set your budget",
+  "amount": "Amount",
+  "cancel": "Cancel",
+  "invalidNumberError" : "Please enter a valid number",
+  "ok" : "Ok"
 }
