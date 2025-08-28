@@ -25,4 +25,10 @@ abstract class SettingsState with _$SettingsState {
       return Option<ExpenseCategoriesDto>(id: e.name, label: e.name, value: e);
     }).toList();
   }
+
+  List<Option<Currency>> get getCurrencyOptions {
+    return Currency.values.map((e) {
+      return Option<Currency>(id: e.code, label: '${e.symbol} (${e.country})', value: e);
+    }).toList();
+  }
 }

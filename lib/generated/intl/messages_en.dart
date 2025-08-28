@@ -33,11 +33,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "expenseTracker": MessageLookupByLibrary.simpleMessage("Expense Tracker"),
     "expenses": MessageLookupByLibrary.simpleMessage("Expenses"),
     "home": MessageLookupByLibrary.simpleMessage("Home"),
+    "invalidName": MessageLookupByLibrary.simpleMessage("Invalid Name"),
     "invalidNumberError": MessageLookupByLibrary.simpleMessage(
       "Please enter a valid number",
     ),
     "noData": MessageLookupByLibrary.simpleMessage("No data available"),
     "ok": MessageLookupByLibrary.simpleMessage("Ok"),
+    "pleaseSelectCategory": MessageLookupByLibrary.simpleMessage(
+      "Please select a category",
+    ),
     "search": MessageLookupByLibrary.simpleMessage("Search"),
     "setExpenseLimit": MessageLookupByLibrary.simpleMessage(
       "Set Expenses Limit",
@@ -46,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings": MessageLookupByLibrary.simpleMessage("Settings"),
     "stats": MessageLookupByLibrary.simpleMessage("Stats"),
     "sync": MessageLookupByLibrary.simpleMessage("Sync"),
+    "update": MessageLookupByLibrary.simpleMessage("Update"),
     "yourExpenses": MessageLookupByLibrary.simpleMessage("Your Expenses"),
   };
 }

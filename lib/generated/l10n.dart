@@ -189,6 +189,31 @@ class Tr {
   String get search {
     return Intl.message('Search', name: 'search', desc: '', args: []);
   }
+
+  /// `Update`
+  String get update {
+    return Intl.message('Update', name: 'update', desc: '', args: []);
+  }
+
+  /// `Invalid Name`
+  String get invalidName {
+    return Intl.message(
+      'Invalid Name',
+      name: 'invalidName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select a category`
+  String get pleaseSelectCategory {
+    return Intl.message(
+      'Please select a category',
+      name: 'pleaseSelectCategory',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<Tr> {

@@ -77,10 +77,8 @@ class BudgetSetDialog extends HookWidget {
                       errorText.value = null;
                     }
 
-                    context.read<SettingsCubit>().setMonthlyExpenseAndCurrency(
-                      currency: selectedCurrency.value,
-                      monthlyBudget: value,
-                    );
+                    context.read<SettingsCubit>().setCurrency(currency: selectedCurrency.value);
+                    context.read<SettingsCubit>().setMonthlyExpense(monthlyBudget: value);
                     Navigator.of(context).pop();
                   },
                   child: Text(Tr.current.ok.toUpperCase(), style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),

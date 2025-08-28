@@ -4,6 +4,7 @@ import 'package:expense_tracker_test/misc/build_context.dart';
 import 'package:expense_tracker_test/misc/hooks.dart';
 import 'package:expense_tracker_test/modules/expenses/expenses_cubit.dart';
 import 'package:expense_tracker_test/modules/expenses/state/expenses_state.dart';
+import 'package:expense_tracker_test/modules/settings/component/currencies_enum.dart';
 import 'package:expense_tracker_test/modules/settings/settings_cubit.dart';
 import 'package:expense_tracker_test/modules/settings/state/settings_state.dart';
 import 'package:expense_tracker_test/repository/expenses/dto/expense_categories_dto.dart';
@@ -21,7 +22,6 @@ class AddExpensePage extends HookWidget {
     final expenseController = useTextEditingController();
     final nameController = useTextEditingController();
     final dateController = useTextEditingController();
-    final amountErrorText = useState<String?>(null);
 
     final settingState = useBlocBuilder<SettingsCubit, SettingsState>();
     final expenseState = useBlocBuilder<ExpensesCubit, ExpensesState>();
@@ -40,36 +40,48 @@ class AddExpensePage extends HookWidget {
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(Tr.current.addExpense, style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500)),
+                Center(
+                  child: Text(Tr.current.addExpense, style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500)),
+                ),
                 const SizedBox(height: 16),
-
                 TextFormField(
                   controller: expenseController,
                   textAlignVertical: TextAlignVertical.center,
                   keyboardType: TextInputType.number,
                   onChanged: (value) {
                     final text = value.trim();
-                    final number = double.tryParse(text);
-                    if (text.contains('-')) {
-                      amountErrorText.value = Tr.current.cannotNegativeNumber;
-                      return;
-                    }
-                    if (number == null) {
-                      amountErrorText.value = Tr.current.invalidNumberError;
-                      return;
-                    } else {
-                      amountErrorText.value = null;
-                    }
+                    context.read<ExpensesCubit>().updateAmount(text);
                   },
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
-                    labelText: 'Amount',
-                    prefixIcon: const Icon(Icons.abc_outlined, size: 16, color: Colors.grey),
+                    labelText: Tr.current.amount,
+                    prefixIcon: GestureDetector(
+                      onTap: () {
+                        showOptionsModalSheet<Currency>(
+                          context: context,
+                          showSearchFunction: true,
+                          options: settingState.getCurrencyOptions,
+                          title: Tr.current.currency,
+                          value: settingState.selectedCurrency,
+                          onChanged: (value) {
+                            context.read<SettingsCubit>().setCurrency(currency: value.value);
+                          },
+                        );
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          SizedBox(width: 10),
+                          const Icon(Icons.price_change, size: 16, color: Colors.grey),
+                          Text(' ${settingState.selectedCurrency.symbol} '),
+                        ],
+                      ),
+                    ),
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(15), borderSide: BorderSide.none),
-                    errorText: amountErrorText.value,
+                    errorText: expenseState.amountErrorText,
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -79,20 +91,33 @@ class AddExpensePage extends HookWidget {
                   options: settingState.getExpensesCategoriesOptions,
                   showSearchFunction: true,
                   value: expenseState.selectedExpense,
+                  isError: expenseState.selectedExpenseError != null,
                   onChanged: (val) {
                     context.read<ExpensesCubit>().selectExpense(val.value);
                   },
                 ),
+                if (expenseState.selectedExpenseError != null) ...{
+                  Text(
+                    '    ${Tr.current.pleaseSelectCategory}',
+                    style: TextStyle(color: Colors.red.shade900, fontSize: 12),
+                  ),
+                },
+
                 const SizedBox(height: 16),
                 TextFormField(
                   controller: nameController,
                   textAlignVertical: TextAlignVertical.center,
                   keyboardType: TextInputType.name,
+                  onChanged: (value) {
+                    final text = value.trim();
+                    context.read<ExpensesCubit>().updateName(text);
+                  },
                   decoration: InputDecoration(
                     filled: true,
                     fillColor: Colors.white,
                     labelText: 'Expense Name',
                     border: OutlineInputBorder(borderRadius: BorderRadius.circular(15), borderSide: BorderSide.none),
+                    errorText: expenseState.expensesNameError,
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -128,12 +153,17 @@ class AddExpensePage extends HookWidget {
         bottomNavigationBar: Padding(
           padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              context.read<ExpensesCubit>().onUpdate();
+            },
             style: TextButton.styleFrom(
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
               backgroundColor: Theme.of(context).colorScheme.secondary,
             ),
-            child: const Text('Save', style: TextStyle(fontSize: 22, color: Colors.white)),
+            child: Text(
+              Tr.current.update,
+              style: TextStyle(fontSize: 18.sp, color: Colors.white),
+            ),
           ),
         ),
       ),

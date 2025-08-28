@@ -18,5 +18,8 @@
   "cannotNegativeNumber" : "Cannot be negative number",
   "ok" : "Ok",
   "noData": "No data available",
-  "search": "Search"
+  "search": "Search",
+  "update": "Update",
+  "invalidName": "Invalid Name",
+  "pleaseSelectCategory": "Please select a category"
 }

@@ -9,10 +9,14 @@ part 'expenses_state.g.dart';
 abstract class ExpensesState with _$ExpensesState {
   const factory ExpensesState({
     ExpenseCategoriesDto? selectedExpense,
+    String? selectedExpenseError,
     Currency? selectedCurrency,
     @Default(0.00) double amount,
+    String? amountErrorText,
     @Default('') String expensesName,
+    String? expensesNameError,
     DateTime? selectedDate,
+    @Default(false) bool isLoading,
   }) = _ExpensesState;
 
   const ExpensesState._();

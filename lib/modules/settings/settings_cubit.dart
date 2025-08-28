@@ -39,10 +39,13 @@ class SettingsCubit extends Cubit<SettingsState> {
     }
   }
 
-  Future<void> setMonthlyExpenseAndCurrency({required Currency currency, required double monthlyBudget}) async {
-    emit(state.copyWith(selectedCurrency: currency, monthlyBudget: monthlyBudget));
-
-    await sharedPreferences.setValue(SharedPrefKeys.currencySelected, currency.code);
+  Future<void> setMonthlyExpense({required double monthlyBudget}) async {
+    emit(state.copyWith(monthlyBudget: monthlyBudget));
     await sharedPreferences.setValue(SharedPrefKeys.budgetAmount, monthlyBudget);
+  }
+
+  Future<void> setCurrency({required Currency currency}) async {
+    emit(state.copyWith(selectedCurrency: currency));
+    await sharedPreferences.setValue(SharedPrefKeys.currencySelected, currency.code);
   }
 }
