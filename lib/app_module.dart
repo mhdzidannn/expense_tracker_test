@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 import 'package:sembast/sembast_io.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'app_module.config.dart';
 
@@ -15,4 +16,7 @@ abstract class AppModule {
   @lazySingleton
   @preResolve
   Future<Database> get database => databaseFactoryIo.openDatabase(databasePath);
+
+  @preResolve
+  Future<SharedPreferences> get prefs => SharedPreferences.getInstance();
 }

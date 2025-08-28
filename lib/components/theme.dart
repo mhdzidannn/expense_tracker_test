@@ -14,7 +14,8 @@ class ThemeCubit extends Cubit<ThemeData> {
 
 class AppTheme {
   static ThemeData get light => _light.copyWith(
-    scaffoldBackgroundColor: const Color(0xFFE6E6E6),
+    // scaffoldBackgroundColor: const Color(0xFFE6E6E6),
+    scaffoldBackgroundColor: Colors.white,
     colorScheme: ColorScheme.fromSeed(
       seedColor: Colors.deepPurple,
       primaryContainer: Colors.grey.shade100,

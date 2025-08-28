@@ -52,14 +52,14 @@ class SnackbarService {
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 12, vertical: 14),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       child: Text(
                         message,
-                        style: TextStyle(color: _getTextColor(status), fontSize: 15.sp, fontWeight: FontWeight.w500),
+                        style: TextStyle(color: _getTextColor(status), fontSize: 16.sp, fontWeight: FontWeight.w500),
                       ),
                     ),
                   ),

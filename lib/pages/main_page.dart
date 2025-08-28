@@ -1,7 +1,8 @@
 import 'package:expense_tracker_test/generated/l10n.dart';
 import 'package:expense_tracker_test/misc/hooks.dart';
-import 'package:expense_tracker_test/modules/common_data/common_data_cubit.dart';
-import 'package:expense_tracker_test/modules/common_data/state/common_data_state.dart';
+import 'package:expense_tracker_test/modules/settings/settings_cubit.dart';
+import 'package:expense_tracker_test/pages/settings_page.dart';
+import 'package:expense_tracker_test/pages/stats_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,21 +15,12 @@ class MainPage extends HookWidget {
   Widget build(BuildContext context) {
     final selectedIndex = useState(0);
 
-    final state = useBlocBuilder<CommonDataCubit, CommonDataState>();
-
     useAsyncEffect(() {
-      context.read<CommonDataCubit>().getExpenseCategories();
+      context.read<SettingsCubit>().initSettings();
     }, []);
 
     return Scaffold(
-      appBar: AppBar(title: Text('Expense Tracker')),
-      body: IndexedStack(
-        index: selectedIndex.value,
-        children: [
-          Center(child: Text('Home')),
-          Center(child: Text('Profile')),
-        ],
-      ),
+      body: IndexedStack(index: selectedIndex.value, children: [StatsPage(), SettingsPage()]),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.transparent,
         elevation: 0,

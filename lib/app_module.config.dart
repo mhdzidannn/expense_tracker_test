@@ -12,13 +12,14 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:sembast/sembast_io.dart' as _i156;
+import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import 'app_module.dart' as _i460;
 import 'components/theme.dart' as _i321;
 import 'database/modules/common_controller.dart' as _i500;
 import 'database/sync/common_database.dart' as _i446;
 import 'database/sync/expenses_database.dart' as _i446;
-import 'modules/common_data/common_data_cubit.dart' as _i975;
+import 'modules/settings/settings_cubit.dart' as _i559;
 import 'repository/expenses/expense_repository.dart' as _i385;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -29,6 +30,10 @@ extension GetItInjectableX on _i174.GetIt {
   }) async {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final appModule = _$AppModule();
+    await gh.factoryAsync<_i460.SharedPreferences>(
+      () => appModule.prefs,
+      preResolve: true,
+    );
     gh.lazySingleton<_i385.ExpenseRepository>(() => _i385.ExpenseRepository());
     await gh.lazySingletonAsync<_i156.Database>(
       () => appModule.database,
@@ -42,9 +47,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i500.CommonController>(
       () => _i500.CommonController(database: gh<_i446.CommonDatabase>()),
     );
-    gh.lazySingleton<_i975.CommonDataCubit>(
-      () =>
-          _i975.CommonDataCubit(commonController: gh<_i500.CommonController>()),
+    gh.lazySingleton<_i559.SettingsCubit>(
+      () => _i559.SettingsCubit(
+        commonController: gh<_i500.CommonController>(),
+        sharedPreferences: gh<_i460.SharedPreferences>(),
+      ),
     );
     return this;
   }
