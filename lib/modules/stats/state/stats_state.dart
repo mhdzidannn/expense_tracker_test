@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:expense_tracker_test/misc/random.dart';
 import 'package:expense_tracker_test/modules/expenses/dto/expenses_dto.dart';
 import 'package:expense_tracker_test/modules/stats/component/indicator.dart';
@@ -17,7 +19,7 @@ abstract class StatsState with _$StatsState {
     @Default(false) bool isCallingApi,
     @Default(false) bool sortDateAscending,
     @Default(false) bool sortAmountAscending,
-    @Default([]) List<ExpenseCategoriesDto> filteredListOfCategories,
+    @Default([]) List<String> filteredListOfCategories,
     int? filterByMonth,
     int? filterByYear,
   }) = _StatsState;
@@ -29,7 +31,7 @@ abstract class StatsState with _$StatsState {
   List<ExpenseDto> get filteredExpenses {
     final filteredExpenses = filteredListOfCategories.isEmpty
         ? listOfExpenses
-        : listOfExpenses.where((e) => filteredListOfCategories.contains(e.selectedExpense)).toList();
+        : listOfExpenses.where((e) => filteredListOfCategories.contains(e.selectedExpense.name)).toList();
 
     final filteredByTime = (filterByMonth == null && filterByYear == null)
         ? filteredExpenses

@@ -17,7 +17,7 @@ _StatsState _$StatsStateFromJson(Map<String, dynamic> json) => _StatsState(
   sortAmountAscending: json['sortAmountAscending'] as bool? ?? false,
   filteredListOfCategories:
       (json['filteredListOfCategories'] as List<dynamic>?)
-          ?.map((e) => ExpenseCategoriesDto.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => e as String)
           .toList() ??
       const [],
   filterByMonth: (json['filterByMonth'] as num?)?.toInt(),

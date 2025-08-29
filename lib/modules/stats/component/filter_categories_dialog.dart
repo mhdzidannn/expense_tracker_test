@@ -21,16 +21,16 @@ class CategoryFilterChips extends HookWidget {
         spacing: 8,
         runSpacing: 8,
         children: settingsState.expensesCategories.map((category) {
-          final isSelected = statsState.filteredListOfCategories.contains(category);
+          final isSelected = statsState.filteredListOfCategories.contains(category.name);
           return ChoiceChip(
             label: Text(category.name),
             selected: isSelected,
             onSelected: (value) {
               final updated = [...statsState.filteredListOfCategories];
               if (value) {
-                updated.add(category);
+                updated.add(category.name);
               } else {
-                updated.remove(category);
+                updated.remove(category.name);
               }
               context.read<StatsCubit>().updateFilter(updated: updated);
             },

@@ -4,7 +4,6 @@ import 'package:expense_tracker_test/modules/expenses/dto/expenses_dto.dart';
 import 'package:expense_tracker_test/modules/settings/settings_cubit.dart';
 import 'package:expense_tracker_test/modules/stats/dto/expense_item_dto.dart';
 import 'package:expense_tracker_test/modules/stats/state/stats_state.dart';
-import 'package:expense_tracker_test/repository/expenses/dto/expense_categories_dto.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
@@ -41,7 +40,7 @@ class StatsCubit extends Cubit<StatsState> {
     await getAllExpenses();
   }
 
-  void updateFilter({required List<ExpenseCategoriesDto> updated}) async {
+  void updateFilter({required List<String> updated}) async {
     emit(state.copyWith(filteredListOfCategories: updated));
     await getAllExpenses();
   }
@@ -80,25 +79,15 @@ class StatsCubit extends Cubit<StatsState> {
         ),
       );
 
-      monthExpenses.sort(
-        (a, b) => state.sortAmountAscending ? a.amount.compareTo(b.amount) : b.amount.compareTo(a.amount),
-      );
+      monthExpenses.sort((a, b) {
+        final first = a.selectedCurrency.convertTo(budget.currency, a.amount);
+        final second = b.selectedCurrency.convertTo(budget.currency, b.amount);
+        return state.sortAmountAscending ? first.compareTo(second) : second.compareTo(first);
+      });
 
       items.addAll(monthExpenses.map(ExpenseItemDto.expense));
     }
 
     return items;
   }
-
-  // double convertAmount(double amount, Currencie from, Currency to) {
-  //   if (from.code == to.code) return amount;
-
-  //   // assume each currency has exchangeRates with respect to some base (e.g. USD)
-  //   // e.g. from.exchangeRates["USD"] = 1.07
-  //   final base = 'USD'; // your chosen base currency
-
-  //   final amountInBase = amount / from.exchangeRates[base]!;
-  //   final amountInTarget = amountInBase * to.exchangeRates[base]!;
-  //   return amountInTarget;
-  // }
 }

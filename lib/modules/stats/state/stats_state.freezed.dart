@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$StatsState {
 
- List<ExpenseDto> get listOfExpenses; bool get isCallingApi; bool get sortDateAscending; bool get sortAmountAscending; List<ExpenseCategoriesDto> get filteredListOfCategories; int? get filterByMonth; int? get filterByYear;
+ List<ExpenseDto> get listOfExpenses; bool get isCallingApi; bool get sortDateAscending; bool get sortAmountAscending; List<String> get filteredListOfCategories; int? get filterByMonth; int? get filterByYear;
 /// Create a copy of StatsState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $StatsStateCopyWith<$Res>  {
   factory $StatsStateCopyWith(StatsState value, $Res Function(StatsState) _then) = _$StatsStateCopyWithImpl;
 @useResult
 $Res call({
- List<ExpenseDto> listOfExpenses, bool isCallingApi, bool sortDateAscending, bool sortAmountAscending, List<ExpenseCategoriesDto> filteredListOfCategories, int? filterByMonth, int? filterByYear
+ List<ExpenseDto> listOfExpenses, bool isCallingApi, bool sortDateAscending, bool sortAmountAscending, List<String> filteredListOfCategories, int? filterByMonth, int? filterByYear
 });
 
 
@@ -72,7 +72,7 @@ as List<ExpenseDto>,isCallingApi: null == isCallingApi ? _self.isCallingApi : is
 as bool,sortDateAscending: null == sortDateAscending ? _self.sortDateAscending : sortDateAscending // ignore: cast_nullable_to_non_nullable
 as bool,sortAmountAscending: null == sortAmountAscending ? _self.sortAmountAscending : sortAmountAscending // ignore: cast_nullable_to_non_nullable
 as bool,filteredListOfCategories: null == filteredListOfCategories ? _self.filteredListOfCategories : filteredListOfCategories // ignore: cast_nullable_to_non_nullable
-as List<ExpenseCategoriesDto>,filterByMonth: freezed == filterByMonth ? _self.filterByMonth : filterByMonth // ignore: cast_nullable_to_non_nullable
+as List<String>,filterByMonth: freezed == filterByMonth ? _self.filterByMonth : filterByMonth // ignore: cast_nullable_to_non_nullable
 as int?,filterByYear: freezed == filterByYear ? _self.filterByYear : filterByYear // ignore: cast_nullable_to_non_nullable
 as int?,
   ));
@@ -159,7 +159,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<ExpenseDto> listOfExpenses,  bool isCallingApi,  bool sortDateAscending,  bool sortAmountAscending,  List<ExpenseCategoriesDto> filteredListOfCategories,  int? filterByMonth,  int? filterByYear)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<ExpenseDto> listOfExpenses,  bool isCallingApi,  bool sortDateAscending,  bool sortAmountAscending,  List<String> filteredListOfCategories,  int? filterByMonth,  int? filterByYear)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _StatsState() when $default != null:
 return $default(_that.listOfExpenses,_that.isCallingApi,_that.sortDateAscending,_that.sortAmountAscending,_that.filteredListOfCategories,_that.filterByMonth,_that.filterByYear);case _:
@@ -180,7 +180,7 @@ return $default(_that.listOfExpenses,_that.isCallingApi,_that.sortDateAscending,
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<ExpenseDto> listOfExpenses,  bool isCallingApi,  bool sortDateAscending,  bool sortAmountAscending,  List<ExpenseCategoriesDto> filteredListOfCategories,  int? filterByMonth,  int? filterByYear)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<ExpenseDto> listOfExpenses,  bool isCallingApi,  bool sortDateAscending,  bool sortAmountAscending,  List<String> filteredListOfCategories,  int? filterByMonth,  int? filterByYear)  $default,) {final _that = this;
 switch (_that) {
 case _StatsState():
 return $default(_that.listOfExpenses,_that.isCallingApi,_that.sortDateAscending,_that.sortAmountAscending,_that.filteredListOfCategories,_that.filterByMonth,_that.filterByYear);case _:
@@ -200,7 +200,7 @@ return $default(_that.listOfExpenses,_that.isCallingApi,_that.sortDateAscending,
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<ExpenseDto> listOfExpenses,  bool isCallingApi,  bool sortDateAscending,  bool sortAmountAscending,  List<ExpenseCategoriesDto> filteredListOfCategories,  int? filterByMonth,  int? filterByYear)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<ExpenseDto> listOfExpenses,  bool isCallingApi,  bool sortDateAscending,  bool sortAmountAscending,  List<String> filteredListOfCategories,  int? filterByMonth,  int? filterByYear)?  $default,) {final _that = this;
 switch (_that) {
 case _StatsState() when $default != null:
 return $default(_that.listOfExpenses,_that.isCallingApi,_that.sortDateAscending,_that.sortAmountAscending,_that.filteredListOfCategories,_that.filterByMonth,_that.filterByYear);case _:
@@ -215,7 +215,7 @@ return $default(_that.listOfExpenses,_that.isCallingApi,_that.sortDateAscending,
 @JsonSerializable()
 
 class _StatsState extends StatsState {
-  const _StatsState({final  List<ExpenseDto> listOfExpenses = const [], this.isCallingApi = false, this.sortDateAscending = false, this.sortAmountAscending = false, final  List<ExpenseCategoriesDto> filteredListOfCategories = const [], this.filterByMonth, this.filterByYear}): _listOfExpenses = listOfExpenses,_filteredListOfCategories = filteredListOfCategories,super._();
+  const _StatsState({final  List<ExpenseDto> listOfExpenses = const [], this.isCallingApi = false, this.sortDateAscending = false, this.sortAmountAscending = false, final  List<String> filteredListOfCategories = const [], this.filterByMonth, this.filterByYear}): _listOfExpenses = listOfExpenses,_filteredListOfCategories = filteredListOfCategories,super._();
   factory _StatsState.fromJson(Map<String, dynamic> json) => _$StatsStateFromJson(json);
 
  final  List<ExpenseDto> _listOfExpenses;
@@ -228,8 +228,8 @@ class _StatsState extends StatsState {
 @override@JsonKey() final  bool isCallingApi;
 @override@JsonKey() final  bool sortDateAscending;
 @override@JsonKey() final  bool sortAmountAscending;
- final  List<ExpenseCategoriesDto> _filteredListOfCategories;
-@override@JsonKey() List<ExpenseCategoriesDto> get filteredListOfCategories {
+ final  List<String> _filteredListOfCategories;
+@override@JsonKey() List<String> get filteredListOfCategories {
   if (_filteredListOfCategories is EqualUnmodifiableListView) return _filteredListOfCategories;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_filteredListOfCategories);
@@ -271,7 +271,7 @@ abstract mixin class _$StatsStateCopyWith<$Res> implements $StatsStateCopyWith<$
   factory _$StatsStateCopyWith(_StatsState value, $Res Function(_StatsState) _then) = __$StatsStateCopyWithImpl;
 @override @useResult
 $Res call({
- List<ExpenseDto> listOfExpenses, bool isCallingApi, bool sortDateAscending, bool sortAmountAscending, List<ExpenseCategoriesDto> filteredListOfCategories, int? filterByMonth, int? filterByYear
+ List<ExpenseDto> listOfExpenses, bool isCallingApi, bool sortDateAscending, bool sortAmountAscending, List<String> filteredListOfCategories, int? filterByMonth, int? filterByYear
 });
 
 
@@ -295,7 +295,7 @@ as List<ExpenseDto>,isCallingApi: null == isCallingApi ? _self.isCallingApi : is
 as bool,sortDateAscending: null == sortDateAscending ? _self.sortDateAscending : sortDateAscending // ignore: cast_nullable_to_non_nullable
 as bool,sortAmountAscending: null == sortAmountAscending ? _self.sortAmountAscending : sortAmountAscending // ignore: cast_nullable_to_non_nullable
 as bool,filteredListOfCategories: null == filteredListOfCategories ? _self._filteredListOfCategories : filteredListOfCategories // ignore: cast_nullable_to_non_nullable
-as List<ExpenseCategoriesDto>,filterByMonth: freezed == filterByMonth ? _self.filterByMonth : filterByMonth // ignore: cast_nullable_to_non_nullable
+as List<String>,filterByMonth: freezed == filterByMonth ? _self.filterByMonth : filterByMonth // ignore: cast_nullable_to_non_nullable
 as int?,filterByYear: freezed == filterByYear ? _self.filterByYear : filterByYear // ignore: cast_nullable_to_non_nullable
 as int?,
   ));
