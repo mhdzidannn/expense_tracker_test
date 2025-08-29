@@ -89,7 +89,7 @@ class OptionBottomModal<T> extends HookWidget {
                         maxLines: 1,
                       ),
               ),
-              Icon(Icons.search, size: 20),
+              Icon(Icons.search, size: 20, color: Colors.deepPurple),
             ],
           ),
         ),

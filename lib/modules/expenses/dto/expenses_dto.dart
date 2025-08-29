@@ -9,13 +9,13 @@ part 'expenses_dto.g.dart';
 abstract class ExpenseDto with _$ExpenseDto {
   @JsonSerializable(explicitToJson: true)
   const factory ExpenseDto({
-    required String id,
+    String? id,
     @JsonKey(includeToJson: true, includeFromJson: true) required ExpenseCategoriesDto selectedExpense,
     @JsonKey(includeToJson: true, includeFromJson: true) required Currency selectedCurrency,
     @Default(0.00) double amount,
     String? expensesName,
     required DateTime selectedDate,
-    required DateTime createdAt,
+    DateTime? createdAt,
     DateTime? updatedAt,
   }) = _ExpenseDto;
 

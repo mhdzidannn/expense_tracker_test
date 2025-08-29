@@ -1,3 +1,4 @@
+import 'package:expense_tracker_test/modules/expenses/dto/expenses_dto.dart';
 import 'package:expense_tracker_test/pages/add_expenses_page.dart';
 import 'package:expense_tracker_test/pages/main_page.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,10 @@ GoRouter createRouter() {
     navigatorKey: NavigationalUtil.rootKey,
     routes: [
       _rootRoute(route: Routes.main, builder: (context, state) => const MainPage()),
-      _rootRoute(route: Routes.addExpenses, builder: (context, state) => const AddExpensePage()),
+      _rootRoute(
+        route: Routes.addExpenses,
+        builder: (context, state) => AddExpensePage(editingExpenseDto: state.extra as ExpenseDto?),
+      ),
     ],
   );
 }

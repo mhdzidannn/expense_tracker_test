@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ExpenseDto {
 
- String get id;@JsonKey(includeToJson: true, includeFromJson: true) ExpenseCategoriesDto get selectedExpense;@JsonKey(includeToJson: true, includeFromJson: true) Currency get selectedCurrency; double get amount; String? get expensesName; DateTime get selectedDate; DateTime get createdAt; DateTime? get updatedAt;
+ String? get id;@JsonKey(includeToJson: true, includeFromJson: true) ExpenseCategoriesDto get selectedExpense;@JsonKey(includeToJson: true, includeFromJson: true) Currency get selectedCurrency; double get amount; String? get expensesName; DateTime get selectedDate; DateTime? get createdAt; DateTime? get updatedAt;
 /// Create a copy of ExpenseDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -48,7 +48,7 @@ abstract mixin class $ExpenseDtoCopyWith<$Res>  {
   factory $ExpenseDtoCopyWith(ExpenseDto value, $Res Function(ExpenseDto) _then) = _$ExpenseDtoCopyWithImpl;
 @useResult
 $Res call({
- String id,@JsonKey(includeToJson: true, includeFromJson: true) ExpenseCategoriesDto selectedExpense,@JsonKey(includeToJson: true, includeFromJson: true) Currency selectedCurrency, double amount, String? expensesName, DateTime selectedDate, DateTime createdAt, DateTime? updatedAt
+ String? id,@JsonKey(includeToJson: true, includeFromJson: true) ExpenseCategoriesDto selectedExpense,@JsonKey(includeToJson: true, includeFromJson: true) Currency selectedCurrency, double amount, String? expensesName, DateTime selectedDate, DateTime? createdAt, DateTime? updatedAt
 });
 
 
@@ -65,16 +65,16 @@ class _$ExpenseDtoCopyWithImpl<$Res>
 
 /// Create a copy of ExpenseDto
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? selectedExpense = null,Object? selectedCurrency = null,Object? amount = null,Object? expensesName = freezed,Object? selectedDate = null,Object? createdAt = null,Object? updatedAt = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = freezed,Object? selectedExpense = null,Object? selectedCurrency = null,Object? amount = null,Object? expensesName = freezed,Object? selectedDate = null,Object? createdAt = freezed,Object? updatedAt = freezed,}) {
   return _then(_self.copyWith(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,selectedExpense: null == selectedExpense ? _self.selectedExpense : selectedExpense // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,selectedExpense: null == selectedExpense ? _self.selectedExpense : selectedExpense // ignore: cast_nullable_to_non_nullable
 as ExpenseCategoriesDto,selectedCurrency: null == selectedCurrency ? _self.selectedCurrency : selectedCurrency // ignore: cast_nullable_to_non_nullable
 as Currency,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
 as double,expensesName: freezed == expensesName ? _self.expensesName : expensesName // ignore: cast_nullable_to_non_nullable
 as String?,selectedDate: null == selectedDate ? _self.selectedDate : selectedDate // ignore: cast_nullable_to_non_nullable
-as DateTime,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as DateTime,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+as DateTime,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as DateTime?,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
 as DateTime?,
   ));
 }
@@ -169,7 +169,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id, @JsonKey(includeToJson: true, includeFromJson: true)  ExpenseCategoriesDto selectedExpense, @JsonKey(includeToJson: true, includeFromJson: true)  Currency selectedCurrency,  double amount,  String? expensesName,  DateTime selectedDate,  DateTime createdAt,  DateTime? updatedAt)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String? id, @JsonKey(includeToJson: true, includeFromJson: true)  ExpenseCategoriesDto selectedExpense, @JsonKey(includeToJson: true, includeFromJson: true)  Currency selectedCurrency,  double amount,  String? expensesName,  DateTime selectedDate,  DateTime? createdAt,  DateTime? updatedAt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ExpenseDto() when $default != null:
 return $default(_that.id,_that.selectedExpense,_that.selectedCurrency,_that.amount,_that.expensesName,_that.selectedDate,_that.createdAt,_that.updatedAt);case _:
@@ -190,7 +190,7 @@ return $default(_that.id,_that.selectedExpense,_that.selectedCurrency,_that.amou
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id, @JsonKey(includeToJson: true, includeFromJson: true)  ExpenseCategoriesDto selectedExpense, @JsonKey(includeToJson: true, includeFromJson: true)  Currency selectedCurrency,  double amount,  String? expensesName,  DateTime selectedDate,  DateTime createdAt,  DateTime? updatedAt)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String? id, @JsonKey(includeToJson: true, includeFromJson: true)  ExpenseCategoriesDto selectedExpense, @JsonKey(includeToJson: true, includeFromJson: true)  Currency selectedCurrency,  double amount,  String? expensesName,  DateTime selectedDate,  DateTime? createdAt,  DateTime? updatedAt)  $default,) {final _that = this;
 switch (_that) {
 case _ExpenseDto():
 return $default(_that.id,_that.selectedExpense,_that.selectedCurrency,_that.amount,_that.expensesName,_that.selectedDate,_that.createdAt,_that.updatedAt);case _:
@@ -210,7 +210,7 @@ return $default(_that.id,_that.selectedExpense,_that.selectedCurrency,_that.amou
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id, @JsonKey(includeToJson: true, includeFromJson: true)  ExpenseCategoriesDto selectedExpense, @JsonKey(includeToJson: true, includeFromJson: true)  Currency selectedCurrency,  double amount,  String? expensesName,  DateTime selectedDate,  DateTime createdAt,  DateTime? updatedAt)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String? id, @JsonKey(includeToJson: true, includeFromJson: true)  ExpenseCategoriesDto selectedExpense, @JsonKey(includeToJson: true, includeFromJson: true)  Currency selectedCurrency,  double amount,  String? expensesName,  DateTime selectedDate,  DateTime? createdAt,  DateTime? updatedAt)?  $default,) {final _that = this;
 switch (_that) {
 case _ExpenseDto() when $default != null:
 return $default(_that.id,_that.selectedExpense,_that.selectedCurrency,_that.amount,_that.expensesName,_that.selectedDate,_that.createdAt,_that.updatedAt);case _:
@@ -225,16 +225,16 @@ return $default(_that.id,_that.selectedExpense,_that.selectedCurrency,_that.amou
 
 @JsonSerializable(explicitToJson: true)
 class _ExpenseDto implements ExpenseDto {
-  const _ExpenseDto({required this.id, @JsonKey(includeToJson: true, includeFromJson: true) required this.selectedExpense, @JsonKey(includeToJson: true, includeFromJson: true) required this.selectedCurrency, this.amount = 0.00, this.expensesName, required this.selectedDate, required this.createdAt, this.updatedAt});
+  const _ExpenseDto({this.id, @JsonKey(includeToJson: true, includeFromJson: true) required this.selectedExpense, @JsonKey(includeToJson: true, includeFromJson: true) required this.selectedCurrency, this.amount = 0.00, this.expensesName, required this.selectedDate, this.createdAt, this.updatedAt});
   factory _ExpenseDto.fromJson(Map<String, dynamic> json) => _$ExpenseDtoFromJson(json);
 
-@override final  String id;
+@override final  String? id;
 @override@JsonKey(includeToJson: true, includeFromJson: true) final  ExpenseCategoriesDto selectedExpense;
 @override@JsonKey(includeToJson: true, includeFromJson: true) final  Currency selectedCurrency;
 @override@JsonKey() final  double amount;
 @override final  String? expensesName;
 @override final  DateTime selectedDate;
-@override final  DateTime createdAt;
+@override final  DateTime? createdAt;
 @override final  DateTime? updatedAt;
 
 /// Create a copy of ExpenseDto
@@ -270,7 +270,7 @@ abstract mixin class _$ExpenseDtoCopyWith<$Res> implements $ExpenseDtoCopyWith<$
   factory _$ExpenseDtoCopyWith(_ExpenseDto value, $Res Function(_ExpenseDto) _then) = __$ExpenseDtoCopyWithImpl;
 @override @useResult
 $Res call({
- String id,@JsonKey(includeToJson: true, includeFromJson: true) ExpenseCategoriesDto selectedExpense,@JsonKey(includeToJson: true, includeFromJson: true) Currency selectedCurrency, double amount, String? expensesName, DateTime selectedDate, DateTime createdAt, DateTime? updatedAt
+ String? id,@JsonKey(includeToJson: true, includeFromJson: true) ExpenseCategoriesDto selectedExpense,@JsonKey(includeToJson: true, includeFromJson: true) Currency selectedCurrency, double amount, String? expensesName, DateTime selectedDate, DateTime? createdAt, DateTime? updatedAt
 });
 
 
@@ -287,16 +287,16 @@ class __$ExpenseDtoCopyWithImpl<$Res>
 
 /// Create a copy of ExpenseDto
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? selectedExpense = null,Object? selectedCurrency = null,Object? amount = null,Object? expensesName = freezed,Object? selectedDate = null,Object? createdAt = null,Object? updatedAt = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = freezed,Object? selectedExpense = null,Object? selectedCurrency = null,Object? amount = null,Object? expensesName = freezed,Object? selectedDate = null,Object? createdAt = freezed,Object? updatedAt = freezed,}) {
   return _then(_ExpenseDto(
-id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
-as String,selectedExpense: null == selectedExpense ? _self.selectedExpense : selectedExpense // ignore: cast_nullable_to_non_nullable
+id: freezed == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as String?,selectedExpense: null == selectedExpense ? _self.selectedExpense : selectedExpense // ignore: cast_nullable_to_non_nullable
 as ExpenseCategoriesDto,selectedCurrency: null == selectedCurrency ? _self.selectedCurrency : selectedCurrency // ignore: cast_nullable_to_non_nullable
 as Currency,amount: null == amount ? _self.amount : amount // ignore: cast_nullable_to_non_nullable
 as double,expensesName: freezed == expensesName ? _self.expensesName : expensesName // ignore: cast_nullable_to_non_nullable
 as String?,selectedDate: null == selectedDate ? _self.selectedDate : selectedDate // ignore: cast_nullable_to_non_nullable
-as DateTime,createdAt: null == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
-as DateTime,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
+as DateTime,createdAt: freezed == createdAt ? _self.createdAt : createdAt // ignore: cast_nullable_to_non_nullable
+as DateTime?,updatedAt: freezed == updatedAt ? _self.updatedAt : updatedAt // ignore: cast_nullable_to_non_nullable
 as DateTime?,
   ));
 }

@@ -42,14 +42,14 @@ Map<String, dynamic> _$ExpensesStateToJson(_ExpensesState instance) =>
     };
 
 const _$CurrencyEnumMap = {
-  Currency.usd: 'USD',
-  Currency.eur: 'EUR',
-  Currency.gbp: 'JPY',
-  Currency.jpy: 'JPY',
-  Currency.cny: 'CNY',
-  Currency.inr: 'INR',
-  Currency.myr: 'MYR',
-  Currency.aud: 'AUD',
-  Currency.cad: 'CAD',
-  Currency.sgd: 'SGD',
+  Currency.usd: 'usd',
+  Currency.eur: 'eur',
+  Currency.gbp: 'gbp',
+  Currency.jpy: 'jpy',
+  Currency.cny: 'cny',
+  Currency.inr: 'inr',
+  Currency.myr: 'myr',
+  Currency.aud: 'aud',
+  Currency.cad: 'cad',
+  Currency.sgd: 'sgd',
 };

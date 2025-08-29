@@ -5,6 +5,7 @@ import 'package:expense_tracker_test/generated/l10n.dart';
 import 'package:expense_tracker_test/misc/hooks.dart';
 import 'package:expense_tracker_test/modules/expenses/expenses_cubit.dart';
 import 'package:expense_tracker_test/modules/settings/settings_cubit.dart';
+import 'package:expense_tracker_test/modules/stats/stats_cubit.dart';
 import 'package:expense_tracker_test/pages/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -43,6 +44,7 @@ class MyApp extends HookWidget {
           BlocProvider(create: (_) => GetIt.instance.get<ThemeCubit>()),
           BlocProvider(create: (_) => GetIt.instance.get<SettingsCubit>()),
           BlocProvider(create: (_) => GetIt.instance.get<ExpensesCubit>()),
+          BlocProvider(create: (_) => GetIt.instance.get<StatsCubit>()),
         ],
         child: HookBuilder(
           builder: (context) {

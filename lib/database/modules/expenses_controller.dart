@@ -21,21 +21,23 @@ class ExpensesController {
       createdAt: DateTime.now().toUtc(),
       updatedAt: DateTime.now().toUtc(),
     );
-    print(withMeta.toJson());
     await database.insert(data: withMeta.toJson());
     return withMeta;
   }
 
   Future<ExpenseDto?> updateExpense(ExpenseDto expense) async {
+    print(expense.id);
     final fromDb = await database.findExactOne(Finder(filter: Filter.equals('id', expense.id)));
+    print('fromDb $fromDb');
     if (fromDb == null) return null;
 
     final updated = expense.copyWith(updatedAt: DateTime.now().toUtc());
+    print('updated $updated');
     await database.update(updated.toJson(), Finder(filter: Filter.equals('id', expense.id)));
     return updated;
   }
 
-  //make sure date is selected date
+  /// Make sure date is selected date
   Future<List<ExpenseDto>> getAllExpenses({
     bool sortByDate = true,
     bool sortByAmount = true,
@@ -61,7 +63,7 @@ class ExpensesController {
     final expenses = <String, ExpenseDto>{};
     for (final record in result) {
       final expense = ExpenseDto.fromJson(record.value as Map<String, dynamic>);
-      expenses[expense.id] = expense;
+      expenses[expense.id!] = expense;
     }
     return expenses.values.toList();
   }
