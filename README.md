@@ -8,7 +8,29 @@ At the time of this writing, the base requirement is completed. Truth be told it
 
 App doesnt have any http request apart from getting the categories of spending.
 
-## Getting Started
+## App FAQ
+
+1. What does sync do
+
+Sync backend with local. WHich in the current case will be fetching the categories only
+
+2. Set monthly expense
+
+At the settings page, you can backtrack the monthly expenses you want to set
+
+3. Update or delete recorded expenses
+
+Swipe the tile from left to right to edit (background will show green color). The inverse would be delete (red background color)
+
+4. How to assign colors to categories
+
+I just thought of this lol, but its currently random :D
+
+5. Currency changes on spent?
+
+You can change the currencies when inputting expense by tapping the icon and select which currencies is desired upom.
+
+## Getting Started on the repo
 
 1. Repo is using FLutter version 3.32.4
 2. Run `flutter pub get`
