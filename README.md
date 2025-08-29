@@ -14,6 +14,11 @@ App doesnt have any http request apart from getting the categories of spending.
 2. Run `flutter pub get`
 3. RUn `flutter pub run build_runner build --delete-conflicting-outputs` to generate files
 
+## TODO
+
+1. Charts!
+2. User edit recommendedPercentage from the API
+3. Currency exchange mechanism (it is static so no API calls)
 
 ## Some rather important notes
 
