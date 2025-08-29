@@ -1,25 +1,25 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 enum Currency {
-  @JsonValue("USD")
+  @JsonValue("usd")
   usd('USD', '\$', 'United States'),
-  @JsonValue("EUR")
+  @JsonValue("eur")
   eur('EUR', '€', 'Eurozone'),
-  @JsonValue("JPY")
+  @JsonValue("gbp")
   gbp('JPY', '£', 'United Kingdom'),
-  @JsonValue("JPY")
+  @JsonValue("jpy")
   jpy('JPY', '¥', 'Japan'),
-  @JsonValue("CNY")
+  @JsonValue("cny")
   cny('CNY', '¥', 'China'),
-  @JsonValue("INR")
+  @JsonValue("inr")
   inr('INR', '₹', 'India'),
-  @JsonValue("MYR")
+  @JsonValue("myr")
   myr('MYR', 'RM', 'Malaysia'),
-  @JsonValue("AUD")
+  @JsonValue("aud")
   aud('AUD', 'A\$', 'Australia'),
-  @JsonValue("CAD")
+  @JsonValue("cad")
   cad('CAD', 'C\$', 'Canada'),
-  @JsonValue("SGD")
+  @JsonValue("sgd")
   sgd('SGD', 'S\$', 'Singapore');
 
   final String code;
@@ -39,7 +39,8 @@ enum Currency {
 
   String toJson() => name;
 
-  static Currency fromJson(String json) => Currency.values.firstWhere((c) => c.name == json);
+  static Currency fromJson(String json) =>
+      Currency.values.firstWhere((c) => c.name.toLowerCase() == json.toLowerCase());
 }
 
 extension CurrencyEnum on Currency {

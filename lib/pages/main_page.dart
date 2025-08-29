@@ -18,7 +18,7 @@ class MainPage extends HookWidget {
     final selectedIndex = useState(0);
 
     useAsyncEffect(() {
-      context.read<SettingsCubit>().initSettings();
+      context.read<SettingsCubit>().updateSettingsState();
     }, [selectedIndex]);
 
     return Scaffold(

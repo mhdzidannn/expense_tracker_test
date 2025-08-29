@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:expense_tracker_test/database/sync/budget_database.dart';
 import 'package:expense_tracker_test/database/sync/common_database.dart';
 import 'package:expense_tracker_test/database/sync/expenses_database.dart';
 import 'package:get_it/get_it.dart';
@@ -8,6 +9,7 @@ Set<String> collectionNames = {};
 
 final List<DatabaseSync> allDbs = List.unmodifiable(<DatabaseSync>[
   GetIt.I.get<CommonDatabase>(),
+  GetIt.I.get<BudgetDatabase>(),
   GetIt.I.get<ExpensesDatabase>(),
 ]);
 

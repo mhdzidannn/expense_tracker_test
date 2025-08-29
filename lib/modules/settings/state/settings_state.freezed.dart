@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SettingsState {
 
- List<ExpenseCategoriesDto> get expensesCategories; Currency get selectedCurrency; double get monthlyBudget;
+ List<ExpenseCategoriesDto> get expensesCategories; List<MonthlyBudgetDto> get monthlyBudgetList; MonthlyBudgetDto get currentMonthlyBudget;
 /// Create a copy of SettingsState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $SettingsStateCopyWith<SettingsState> get copyWith => _$SettingsStateCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SettingsState&&const DeepCollectionEquality().equals(other.expensesCategories, expensesCategories)&&(identical(other.selectedCurrency, selectedCurrency) || other.selectedCurrency == selectedCurrency)&&(identical(other.monthlyBudget, monthlyBudget) || other.monthlyBudget == monthlyBudget));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SettingsState&&const DeepCollectionEquality().equals(other.expensesCategories, expensesCategories)&&const DeepCollectionEquality().equals(other.monthlyBudgetList, monthlyBudgetList)&&(identical(other.currentMonthlyBudget, currentMonthlyBudget) || other.currentMonthlyBudget == currentMonthlyBudget));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(expensesCategories),selectedCurrency,monthlyBudget);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(expensesCategories),const DeepCollectionEquality().hash(monthlyBudgetList),currentMonthlyBudget);
 
 @override
 String toString() {
-  return 'SettingsState(expensesCategories: $expensesCategories, selectedCurrency: $selectedCurrency, monthlyBudget: $monthlyBudget)';
+  return 'SettingsState(expensesCategories: $expensesCategories, monthlyBudgetList: $monthlyBudgetList, currentMonthlyBudget: $currentMonthlyBudget)';
 }
 
 
@@ -48,11 +48,11 @@ abstract mixin class $SettingsStateCopyWith<$Res>  {
   factory $SettingsStateCopyWith(SettingsState value, $Res Function(SettingsState) _then) = _$SettingsStateCopyWithImpl;
 @useResult
 $Res call({
- List<ExpenseCategoriesDto> expensesCategories, Currency selectedCurrency, double monthlyBudget
+ List<ExpenseCategoriesDto> expensesCategories, List<MonthlyBudgetDto> monthlyBudgetList, MonthlyBudgetDto currentMonthlyBudget
 });
 
 
-
+$MonthlyBudgetDtoCopyWith<$Res> get currentMonthlyBudget;
 
 }
 /// @nodoc
@@ -65,15 +65,24 @@ class _$SettingsStateCopyWithImpl<$Res>
 
 /// Create a copy of SettingsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? expensesCategories = null,Object? selectedCurrency = null,Object? monthlyBudget = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? expensesCategories = null,Object? monthlyBudgetList = null,Object? currentMonthlyBudget = null,}) {
   return _then(_self.copyWith(
 expensesCategories: null == expensesCategories ? _self.expensesCategories : expensesCategories // ignore: cast_nullable_to_non_nullable
-as List<ExpenseCategoriesDto>,selectedCurrency: null == selectedCurrency ? _self.selectedCurrency : selectedCurrency // ignore: cast_nullable_to_non_nullable
-as Currency,monthlyBudget: null == monthlyBudget ? _self.monthlyBudget : monthlyBudget // ignore: cast_nullable_to_non_nullable
-as double,
+as List<ExpenseCategoriesDto>,monthlyBudgetList: null == monthlyBudgetList ? _self.monthlyBudgetList : monthlyBudgetList // ignore: cast_nullable_to_non_nullable
+as List<MonthlyBudgetDto>,currentMonthlyBudget: null == currentMonthlyBudget ? _self.currentMonthlyBudget : currentMonthlyBudget // ignore: cast_nullable_to_non_nullable
+as MonthlyBudgetDto,
   ));
 }
-
+/// Create a copy of SettingsState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MonthlyBudgetDtoCopyWith<$Res> get currentMonthlyBudget {
+  
+  return $MonthlyBudgetDtoCopyWith<$Res>(_self.currentMonthlyBudget, (value) {
+    return _then(_self.copyWith(currentMonthlyBudget: value));
+  });
+}
 }
 
 
@@ -155,10 +164,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<ExpenseCategoriesDto> expensesCategories,  Currency selectedCurrency,  double monthlyBudget)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<ExpenseCategoriesDto> expensesCategories,  List<MonthlyBudgetDto> monthlyBudgetList,  MonthlyBudgetDto currentMonthlyBudget)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SettingsState() when $default != null:
-return $default(_that.expensesCategories,_that.selectedCurrency,_that.monthlyBudget);case _:
+return $default(_that.expensesCategories,_that.monthlyBudgetList,_that.currentMonthlyBudget);case _:
   return orElse();
 
 }
@@ -176,10 +185,10 @@ return $default(_that.expensesCategories,_that.selectedCurrency,_that.monthlyBud
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<ExpenseCategoriesDto> expensesCategories,  Currency selectedCurrency,  double monthlyBudget)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<ExpenseCategoriesDto> expensesCategories,  List<MonthlyBudgetDto> monthlyBudgetList,  MonthlyBudgetDto currentMonthlyBudget)  $default,) {final _that = this;
 switch (_that) {
 case _SettingsState():
-return $default(_that.expensesCategories,_that.selectedCurrency,_that.monthlyBudget);case _:
+return $default(_that.expensesCategories,_that.monthlyBudgetList,_that.currentMonthlyBudget);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +205,10 @@ return $default(_that.expensesCategories,_that.selectedCurrency,_that.monthlyBud
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<ExpenseCategoriesDto> expensesCategories,  Currency selectedCurrency,  double monthlyBudget)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<ExpenseCategoriesDto> expensesCategories,  List<MonthlyBudgetDto> monthlyBudgetList,  MonthlyBudgetDto currentMonthlyBudget)?  $default,) {final _that = this;
 switch (_that) {
 case _SettingsState() when $default != null:
-return $default(_that.expensesCategories,_that.selectedCurrency,_that.monthlyBudget);case _:
+return $default(_that.expensesCategories,_that.monthlyBudgetList,_that.currentMonthlyBudget);case _:
   return null;
 
 }
@@ -211,7 +220,7 @@ return $default(_that.expensesCategories,_that.selectedCurrency,_that.monthlyBud
 @JsonSerializable()
 
 class _SettingsState extends SettingsState {
-  const _SettingsState({required final  List<ExpenseCategoriesDto> expensesCategories, this.selectedCurrency = Currency.myr, this.monthlyBudget = 0.0}): _expensesCategories = expensesCategories,super._();
+  const _SettingsState({required final  List<ExpenseCategoriesDto> expensesCategories, required final  List<MonthlyBudgetDto> monthlyBudgetList, required this.currentMonthlyBudget}): _expensesCategories = expensesCategories,_monthlyBudgetList = monthlyBudgetList,super._();
   factory _SettingsState.fromJson(Map<String, dynamic> json) => _$SettingsStateFromJson(json);
 
  final  List<ExpenseCategoriesDto> _expensesCategories;
@@ -221,8 +230,14 @@ class _SettingsState extends SettingsState {
   return EqualUnmodifiableListView(_expensesCategories);
 }
 
-@override@JsonKey() final  Currency selectedCurrency;
-@override@JsonKey() final  double monthlyBudget;
+ final  List<MonthlyBudgetDto> _monthlyBudgetList;
+@override List<MonthlyBudgetDto> get monthlyBudgetList {
+  if (_monthlyBudgetList is EqualUnmodifiableListView) return _monthlyBudgetList;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_monthlyBudgetList);
+}
+
+@override final  MonthlyBudgetDto currentMonthlyBudget;
 
 /// Create a copy of SettingsState
 /// with the given fields replaced by the non-null parameter values.
@@ -237,16 +252,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SettingsState&&const DeepCollectionEquality().equals(other._expensesCategories, _expensesCategories)&&(identical(other.selectedCurrency, selectedCurrency) || other.selectedCurrency == selectedCurrency)&&(identical(other.monthlyBudget, monthlyBudget) || other.monthlyBudget == monthlyBudget));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SettingsState&&const DeepCollectionEquality().equals(other._expensesCategories, _expensesCategories)&&const DeepCollectionEquality().equals(other._monthlyBudgetList, _monthlyBudgetList)&&(identical(other.currentMonthlyBudget, currentMonthlyBudget) || other.currentMonthlyBudget == currentMonthlyBudget));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_expensesCategories),selectedCurrency,monthlyBudget);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_expensesCategories),const DeepCollectionEquality().hash(_monthlyBudgetList),currentMonthlyBudget);
 
 @override
 String toString() {
-  return 'SettingsState(expensesCategories: $expensesCategories, selectedCurrency: $selectedCurrency, monthlyBudget: $monthlyBudget)';
+  return 'SettingsState(expensesCategories: $expensesCategories, monthlyBudgetList: $monthlyBudgetList, currentMonthlyBudget: $currentMonthlyBudget)';
 }
 
 
@@ -257,11 +272,11 @@ abstract mixin class _$SettingsStateCopyWith<$Res> implements $SettingsStateCopy
   factory _$SettingsStateCopyWith(_SettingsState value, $Res Function(_SettingsState) _then) = __$SettingsStateCopyWithImpl;
 @override @useResult
 $Res call({
- List<ExpenseCategoriesDto> expensesCategories, Currency selectedCurrency, double monthlyBudget
+ List<ExpenseCategoriesDto> expensesCategories, List<MonthlyBudgetDto> monthlyBudgetList, MonthlyBudgetDto currentMonthlyBudget
 });
 
 
-
+@override $MonthlyBudgetDtoCopyWith<$Res> get currentMonthlyBudget;
 
 }
 /// @nodoc
@@ -274,16 +289,25 @@ class __$SettingsStateCopyWithImpl<$Res>
 
 /// Create a copy of SettingsState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? expensesCategories = null,Object? selectedCurrency = null,Object? monthlyBudget = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? expensesCategories = null,Object? monthlyBudgetList = null,Object? currentMonthlyBudget = null,}) {
   return _then(_SettingsState(
 expensesCategories: null == expensesCategories ? _self._expensesCategories : expensesCategories // ignore: cast_nullable_to_non_nullable
-as List<ExpenseCategoriesDto>,selectedCurrency: null == selectedCurrency ? _self.selectedCurrency : selectedCurrency // ignore: cast_nullable_to_non_nullable
-as Currency,monthlyBudget: null == monthlyBudget ? _self.monthlyBudget : monthlyBudget // ignore: cast_nullable_to_non_nullable
-as double,
+as List<ExpenseCategoriesDto>,monthlyBudgetList: null == monthlyBudgetList ? _self._monthlyBudgetList : monthlyBudgetList // ignore: cast_nullable_to_non_nullable
+as List<MonthlyBudgetDto>,currentMonthlyBudget: null == currentMonthlyBudget ? _self.currentMonthlyBudget : currentMonthlyBudget // ignore: cast_nullable_to_non_nullable
+as MonthlyBudgetDto,
   ));
 }
 
-
+/// Create a copy of SettingsState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$MonthlyBudgetDtoCopyWith<$Res> get currentMonthlyBudget {
+  
+  return $MonthlyBudgetDtoCopyWith<$Res>(_self.currentMonthlyBudget, (value) {
+    return _then(_self.copyWith(currentMonthlyBudget: value));
+  });
+}
 }
 
 // dart format on

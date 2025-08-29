@@ -29,15 +29,16 @@ class SettingsPage extends HookWidget {
               ListTile(
                 title: Text(Tr.current.setExpenseLimit),
                 subtitle: Text(
-                  '${Tr.current.currentExpense}: ${state.selectedCurrency.symbol}${state.monthlyBudget.toStringAsFixed(2)}',
+                  '${Tr.current.currentExpense}: ${state.currentMonthlyBudget.currency.symbol}${state.currentMonthlyBudget.amount.toStringAsFixed(2)}',
                 ),
                 onTap: () async {
                   await showDialog(context: context, builder: (context) => const BudgetSetDialog());
                 },
+                trailing: Icon(Icons.monetization_on, color: Colors.purple),
               ),
               ListTile(
                 title: Text(Tr.current.sync),
-                trailing: Icon(Icons.sync),
+                trailing: Icon(Icons.sync, color: Colors.purple),
                 onTap: () {
                   context.read<SettingsCubit>().syncDb();
                 },
