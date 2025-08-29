@@ -55,11 +55,12 @@ extension ExpenseItemDtoPatterns on ExpenseItemDto {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Header value)?  header,TResult Function( _Expense value)?  expense,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( _Header value)?  header,TResult Function( _Subheader value)?  subheader,TResult Function( _Expense value)?  expense,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case _Header() when header != null:
-return header(_that);case _Expense() when expense != null:
+return header(_that);case _Subheader() when subheader != null:
+return subheader(_that);case _Expense() when expense != null:
 return expense(_that);case _:
   return orElse();
 
@@ -78,11 +79,12 @@ return expense(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Header value)  header,required TResult Function( _Expense value)  expense,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( _Header value)  header,required TResult Function( _Subheader value)  subheader,required TResult Function( _Expense value)  expense,}){
 final _that = this;
 switch (_that) {
 case _Header():
-return header(_that);case _Expense():
+return header(_that);case _Subheader():
+return subheader(_that);case _Expense():
 return expense(_that);case _:
   throw StateError('Unexpected subclass');
 
@@ -100,11 +102,12 @@ return expense(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Header value)?  header,TResult? Function( _Expense value)?  expense,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( _Header value)?  header,TResult? Function( _Subheader value)?  subheader,TResult? Function( _Expense value)?  expense,}){
 final _that = this;
 switch (_that) {
 case _Header() when header != null:
-return header(_that);case _Expense() when expense != null:
+return header(_that);case _Subheader() when subheader != null:
+return subheader(_that);case _Expense() when expense != null:
 return expense(_that);case _:
   return null;
 
@@ -122,10 +125,11 @@ return expense(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String month)?  header,TResult Function( ExpenseDto expense)?  expense,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String input)?  header,TResult Function( String input)?  subheader,TResult Function( ExpenseDto expense)?  expense,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Header() when header != null:
-return header(_that.month);case _Expense() when expense != null:
+return header(_that.input);case _Subheader() when subheader != null:
+return subheader(_that.input);case _Expense() when expense != null:
 return expense(_that.expense);case _:
   return orElse();
 
@@ -144,10 +148,11 @@ return expense(_that.expense);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String month)  header,required TResult Function( ExpenseDto expense)  expense,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String input)  header,required TResult Function( String input)  subheader,required TResult Function( ExpenseDto expense)  expense,}) {final _that = this;
 switch (_that) {
 case _Header():
-return header(_that.month);case _Expense():
+return header(_that.input);case _Subheader():
+return subheader(_that.input);case _Expense():
 return expense(_that.expense);case _:
   throw StateError('Unexpected subclass');
 
@@ -165,10 +170,11 @@ return expense(_that.expense);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String month)?  header,TResult? Function( ExpenseDto expense)?  expense,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String input)?  header,TResult? Function( String input)?  subheader,TResult? Function( ExpenseDto expense)?  expense,}) {final _that = this;
 switch (_that) {
 case _Header() when header != null:
-return header(_that.month);case _Expense() when expense != null:
+return header(_that.input);case _Subheader() when subheader != null:
+return subheader(_that.input);case _Expense() when expense != null:
 return expense(_that.expense);case _:
   return null;
 
@@ -181,10 +187,10 @@ return expense(_that.expense);case _:
 
 
 class _Header implements ExpenseItemDto {
-  const _Header(this.month);
+  const _Header(this.input);
   
 
- final  String month;
+ final  String input;
 
 /// Create a copy of ExpenseItemDto
 /// with the given fields replaced by the non-null parameter values.
@@ -196,16 +202,16 @@ _$HeaderCopyWith<_Header> get copyWith => __$HeaderCopyWithImpl<_Header>(this, _
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Header&&(identical(other.month, month) || other.month == month));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Header&&(identical(other.input, input) || other.input == input));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,month);
+int get hashCode => Object.hash(runtimeType,input);
 
 @override
 String toString() {
-  return 'ExpenseItemDto.header(month: $month)';
+  return 'ExpenseItemDto.header(input: $input)';
 }
 
 
@@ -216,7 +222,7 @@ abstract mixin class _$HeaderCopyWith<$Res> implements $ExpenseItemDtoCopyWith<$
   factory _$HeaderCopyWith(_Header value, $Res Function(_Header) _then) = __$HeaderCopyWithImpl;
 @useResult
 $Res call({
- String month
+ String input
 });
 
 
@@ -233,9 +239,75 @@ class __$HeaderCopyWithImpl<$Res>
 
 /// Create a copy of ExpenseItemDto
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? month = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? input = null,}) {
   return _then(_Header(
-null == month ? _self.month : month // ignore: cast_nullable_to_non_nullable
+null == input ? _self.input : input // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class _Subheader implements ExpenseItemDto {
+  const _Subheader(this.input);
+  
+
+ final  String input;
+
+/// Create a copy of ExpenseItemDto
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$SubheaderCopyWith<_Subheader> get copyWith => __$SubheaderCopyWithImpl<_Subheader>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Subheader&&(identical(other.input, input) || other.input == input));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,input);
+
+@override
+String toString() {
+  return 'ExpenseItemDto.subheader(input: $input)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$SubheaderCopyWith<$Res> implements $ExpenseItemDtoCopyWith<$Res> {
+  factory _$SubheaderCopyWith(_Subheader value, $Res Function(_Subheader) _then) = __$SubheaderCopyWithImpl;
+@useResult
+$Res call({
+ String input
+});
+
+
+
+
+}
+/// @nodoc
+class __$SubheaderCopyWithImpl<$Res>
+    implements _$SubheaderCopyWith<$Res> {
+  __$SubheaderCopyWithImpl(this._self, this._then);
+
+  final _Subheader _self;
+  final $Res Function(_Subheader) _then;
+
+/// Create a copy of ExpenseItemDto
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? input = null,}) {
+  return _then(_Subheader(
+null == input ? _self.input : input // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

@@ -30,7 +30,7 @@ enum Currency {
 
   double convertTo(Currency target, double amount) {
     if (this == target) return amount;
-    final rate = CurrencyEnum.exchangeRates[code]?[target.code];
+    final rate = CurrencyExt.exchangeRates[code]?[target.code];
     if (rate == null) {
       throw Exception("Conversion rate not available: $code → ${target.code}");
     }
@@ -43,7 +43,7 @@ enum Currency {
       Currency.values.firstWhere((c) => c.name.toLowerCase() == json.toLowerCase());
 }
 
-extension CurrencyEnum on Currency {
+extension CurrencyExt on Currency {
   static Currency fromCode(String code) {
     return Currency.values.firstWhere((c) => c.code == code, orElse: () => Currency.myr);
   }
@@ -51,6 +51,7 @@ extension CurrencyEnum on Currency {
   /// Static exchange rates because i do not want to integrate live API for this :)
   static const Map<String, Map<String, double>> exchangeRates = {
     "USD": {
+      "USD": 1,
       "EUR": 0.91,
       "GBP": 0.78,
       "JPY": 146.5,
@@ -62,6 +63,7 @@ extension CurrencyEnum on Currency {
       "SGD": 1.35,
     },
     "EUR": {
+      "EUR": 1,
       "USD": 1.10,
       "GBP": 0.86,
       "JPY": 161.2,
@@ -73,6 +75,7 @@ extension CurrencyEnum on Currency {
       "SGD": 1.48,
     },
     "GBP": {
+      "GBP": 1,
       "USD": 1.28,
       "EUR": 1.16,
       "JPY": 187.2,
@@ -84,6 +87,7 @@ extension CurrencyEnum on Currency {
       "SGD": 1.74,
     },
     "JPY": {
+      "JPY": 1,
       "USD": 0.0068,
       "EUR": 0.0062,
       "GBP": 0.0053,
@@ -95,6 +99,7 @@ extension CurrencyEnum on Currency {
       "SGD": 0.0093,
     },
     "CNY": {
+      "CNY": 1,
       "USD": 0.14,
       "EUR": 0.13,
       "GBP": 0.11,
@@ -106,6 +111,7 @@ extension CurrencyEnum on Currency {
       "SGD": 0.19,
     },
     "INR": {
+      "INR": 1,
       "USD": 0.012,
       "EUR": 0.011,
       "GBP": 0.0094,
@@ -117,6 +123,7 @@ extension CurrencyEnum on Currency {
       "SGD": 0.016,
     },
     "MYR": {
+      "MYR": 1,
       "USD": 0.21,
       "EUR": 0.19,
       "GBP": 0.17,
@@ -128,6 +135,7 @@ extension CurrencyEnum on Currency {
       "SGD": 0.29,
     },
     "AUD": {
+      "AUD": 1,
       "USD": 0.66,
       "EUR": 0.60,
       "GBP": 0.51,
@@ -139,6 +147,7 @@ extension CurrencyEnum on Currency {
       "SGD": 0.88,
     },
     "CAD": {
+      "CAD": 1,
       "USD": 0.74,
       "EUR": 0.67,
       "GBP": 0.57,
@@ -150,6 +159,7 @@ extension CurrencyEnum on Currency {
       "SGD": 0.99,
     },
     "SGD": {
+      "SGD": 1,
       "USD": 0.74,
       "EUR": 0.68,
       "GBP": 0.57,

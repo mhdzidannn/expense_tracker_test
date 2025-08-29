@@ -53,22 +53,33 @@ class StatsCubit extends Cubit<StatsState> {
 
   List<ExpenseItemDto> get buildGroupedExpenses {
     final grouped = <DateTime, List<ExpenseDto>>{};
+
     for (final expense in state.filteredExpenses) {
       final key = DateTime(expense.selectedDate.year, expense.selectedDate.month);
+
       grouped.putIfAbsent(key, () => []).add(expense);
     }
 
     final sortedKeys = grouped.keys.toList()..sort((a, b) => state.sortDateAscending ? a.compareTo(b) : b.compareTo(a));
     final items = <ExpenseItemDto>[];
+
     for (final monthKey in sortedKeys) {
-      // header here
+      double total = 0;
+      // this is from the monthly budget, which means all needs to be adjusted to this currency form
       final budget = settingsCubit.getBudgetDto(monthKey);
+      final monthExpenses = [...grouped[monthKey]!];
+      for (var expense in monthExpenses) {
+        final convertedAmount = expense.selectedCurrency.convertTo(budget.currency, expense.amount);
+        total += convertedAmount;
+      }
+
+      items.add(ExpenseItemDto.header(formatMonthYear(monthKey)));
       items.add(
-        ExpenseItemDto.header(
-          '${formatMonthYear(monthKey)} (Budget set: ${budget.currency.symbol}${budget.amount.toStringAsFixed(2)})',
+        ExpenseItemDto.subheader(
+          'Budget set: ${budget.currency.symbol}${budget.amount.toStringAsFixed(2)} | Remaining: ${budget.currency.symbol}${(budget.amount - total).toStringAsFixed(2)}',
         ),
       );
-      final monthExpenses = [...grouped[monthKey]!];
+
       monthExpenses.sort(
         (a, b) => state.sortAmountAscending ? a.amount.compareTo(b.amount) : b.amount.compareTo(a.amount),
       );
@@ -78,4 +89,16 @@ class StatsCubit extends Cubit<StatsState> {
 
     return items;
   }
+
+  // double convertAmount(double amount, Currencie from, Currency to) {
+  //   if (from.code == to.code) return amount;
+
+  //   // assume each currency has exchangeRates with respect to some base (e.g. USD)
+  //   // e.g. from.exchangeRates["USD"] = 1.07
+  //   final base = 'USD'; // your chosen base currency
+
+  //   final amountInBase = amount / from.exchangeRates[base]!;
+  //   final amountInTarget = amountInBase * to.exchangeRates[base]!;
+  //   return amountInTarget;
+  // }
 }

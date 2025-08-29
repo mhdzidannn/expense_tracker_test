@@ -1,8 +1,6 @@
-import 'package:expense_tracker_test/misc/misc.dart';
 import 'package:expense_tracker_test/misc/random.dart';
 import 'package:expense_tracker_test/modules/expenses/dto/expenses_dto.dart';
 import 'package:expense_tracker_test/modules/stats/component/indicator.dart';
-import 'package:expense_tracker_test/modules/stats/dto/expense_item_dto.dart';
 import 'package:expense_tracker_test/modules/stats/dto/pie_chart_mapper.dart';
 import 'package:expense_tracker_test/repository/expenses/dto/expense_categories_dto.dart';
 import 'package:fl_chart/fl_chart.dart';

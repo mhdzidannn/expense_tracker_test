@@ -108,9 +108,13 @@ class StatsPage extends HookWidget {
                   delegate: SliverChildBuilderDelegate((context, index) {
                     final item = groupedItems[index];
                     return item.when(
-                      header: (month) => Padding(
+                      header: (input) => Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                        child: Text(month, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                        child: Text(input, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                      ),
+                      subheader: (input) => Padding(
+                        padding: const EdgeInsets.only(bottom: 8, left: 16),
+                        child: Text(input, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                       ),
                       expense: (expense) => Dismissible(
                         key: ValueKey(expense.id),
