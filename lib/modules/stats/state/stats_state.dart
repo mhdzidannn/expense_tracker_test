@@ -15,6 +15,8 @@ abstract class StatsState with _$StatsState {
     @Default(false) bool sortDateAscending,
     @Default(false) bool sortAmountAscending,
     @Default([]) List<ExpenseCategoriesDto> filteredListOfCategories,
+    int? filterByMonth,
+    int? filterByYear,
   }) = _StatsState;
 
   const StatsState._();
@@ -26,8 +28,17 @@ abstract class StatsState with _$StatsState {
         ? listOfExpenses
         : listOfExpenses.where((e) => filteredListOfCategories.contains(e.selectedExpense)).toList();
 
+    final filteredByTime = (filterByMonth == null && filterByYear == null)
+        ? filteredExpenses
+        : filteredExpenses.where((e) {
+            final matchesMonth = filterByMonth == null || e.selectedDate.month == filterByMonth;
+            final matchesYear = filterByYear == null || e.selectedDate.year == filterByYear;
+
+            return matchesMonth && matchesYear;
+          }).toList();
+
     final grouped = <DateTime, List<ExpenseDto>>{};
-    for (final expense in filteredExpenses) {
+    for (final expense in filteredByTime) {
       final key = DateTime(expense.selectedDate.year, expense.selectedDate.month);
       grouped.putIfAbsent(key, () => []).add(expense);
     }

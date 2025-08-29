@@ -20,6 +20,8 @@ _StatsState _$StatsStateFromJson(Map<String, dynamic> json) => _StatsState(
           ?.map((e) => ExpenseCategoriesDto.fromJson(e as Map<String, dynamic>))
           .toList() ??
       const [],
+  filterByMonth: (json['filterByMonth'] as num?)?.toInt(),
+  filterByYear: (json['filterByYear'] as num?)?.toInt(),
 );
 
 Map<String, dynamic> _$StatsStateToJson(_StatsState instance) =>
@@ -29,4 +31,6 @@ Map<String, dynamic> _$StatsStateToJson(_StatsState instance) =>
       'sortDateAscending': instance.sortDateAscending,
       'sortAmountAscending': instance.sortAmountAscending,
       'filteredListOfCategories': instance.filteredListOfCategories,
+      'filterByMonth': instance.filterByMonth,
+      'filterByYear': instance.filterByYear,
     };

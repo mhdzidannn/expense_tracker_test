@@ -1,8 +1,10 @@
 import 'package:expense_tracker_test/generated/l10n.dart';
 import 'package:expense_tracker_test/misc/hooks.dart';
 import 'package:expense_tracker_test/misc/misc.dart';
+import 'package:expense_tracker_test/modules/stats/component/chart.dart';
 import 'package:expense_tracker_test/modules/stats/component/delete_expense_dialog.dart';
 import 'package:expense_tracker_test/modules/stats/component/filter_categories_dialog.dart';
+import 'package:expense_tracker_test/modules/stats/component/filter_timestamp.dart';
 import 'package:expense_tracker_test/modules/stats/component/sort_dialog.dart';
 import 'package:expense_tracker_test/modules/stats/dto/expense_item_dto.dart';
 
@@ -23,6 +25,8 @@ class StatsPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final statsState = useBlocBuilder<StatsCubit, StatsState>();
+
     useAsyncEffect(() {
       context.read<StatsCubit>().getAllExpenses();
     }, []);
@@ -43,13 +47,19 @@ class StatsPage extends HookWidget {
                   Row(
                     children: [
                       IconButton(
-                        icon: const Icon(Icons.filter_list, color: Colors.deepPurple),
+                        icon: const Icon(Icons.filter_alt, color: Colors.deepPurple),
                         onPressed: () {
                           showModalBottomSheet(
                             context: context,
                             isScrollControlled: true,
                             builder: (context) => CategoryFilterChips(),
                           );
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.filter_list, color: Colors.deepPurple),
+                        onPressed: () {
+                          showDialog(context: context, builder: (context) => FilterTimestamp());
                         },
                       ),
                       IconButton(
@@ -64,6 +74,10 @@ class StatsPage extends HookWidget {
               ),
               backgroundColor: Colors.white,
             ),
+
+            if (statsState.listOfExpenses.isNotEmpty && !statsState.isCallingApi) ...{
+              SliverToBoxAdapter(child: TransactionsPieChart()),
+            },
 
             BlocBuilder<StatsCubit, StatsState>(
               builder: (context, state) {
@@ -87,7 +101,7 @@ class StatsPage extends HookWidget {
                       ],
                     ),
                   );
-                }
+                } else {}
 
                 final groupedItems = state.buildGroupedExpenses;
                 return SliverList(
@@ -143,7 +157,7 @@ class StatsPage extends HookWidget {
               },
             ),
 
-            SliverToBoxAdapter(child: SizedBox(height: 20)),
+            SliverToBoxAdapter(child: SizedBox(height: 30)),
           ],
         ),
       ),

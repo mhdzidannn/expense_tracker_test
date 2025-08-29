@@ -44,9 +44,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => appModule.database,
       preResolve: true,
     );
+    gh.lazySingleton<_i807.BudgetDatabase>(() => _i807.BudgetDatabase());
     gh.lazySingleton<_i446.ExpensesDatabase>(() => _i446.ExpensesDatabase());
     gh.lazySingleton<_i321.ThemeCubit>(() => _i321.ThemeCubit());
-    gh.lazySingleton<_i807.BudgetDatabase>(() => _i807.BudgetDatabase());
     gh.factory<_i333.BudgetController>(
       () => _i333.BudgetController(database: gh<_i807.BudgetDatabase>()),
     );
@@ -56,14 +56,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i446.CommonDatabase>(
       () => _i446.CommonDatabase(gh<_i385.ExpenseRepository>()),
     );
+    gh.lazySingleton<_i490.StatsCubit>(
+      () =>
+          _i490.StatsCubit(expensesController: gh<_i247.ExpensesController>()),
+    );
     gh.lazySingleton<_i737.ExpensesCubit>(
       () => _i737.ExpensesCubit(
         expensesController: gh<_i247.ExpensesController>(),
       ),
-    );
-    gh.lazySingleton<_i490.StatsCubit>(
-      () =>
-          _i490.StatsCubit(expensesController: gh<_i247.ExpensesController>()),
     );
     gh.factory<_i500.CommonController>(
       () => _i500.CommonController(database: gh<_i446.CommonDatabase>()),

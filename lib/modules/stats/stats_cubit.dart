@@ -38,4 +38,9 @@ class StatsCubit extends Cubit<StatsState> {
     emit(state.copyWith(filteredListOfCategories: updated));
     await getAllExpenses();
   }
+
+  void updateTimeStampFilter({int? month, int? year}) async {
+    emit(state.copyWith(filterByMonth: month, filterByYear: year));
+    await getAllExpenses();
+  }
 }
