@@ -15,7 +15,10 @@ class StatsCubit extends Cubit<StatsState> {
     // Note: just a mock calling api kalau nak tunjuk loader
     // await Future.delayed(Duration(seconds: 2));
 
-    final result = await expensesController.getAllExpenses();
+    final result = await expensesController.getAllExpenses(
+      sortByDate: !state.sortDateAscending,
+      sortByAmount: !state.sortAmountAscending,
+    );
 
     emit(state.copyWith(isCallingApi: false, listOfExpenses: result));
   }
@@ -23,5 +26,10 @@ class StatsCubit extends Cubit<StatsState> {
   void deleteExpense({required String expenseId}) async {
     await expensesController.deleteExpense(expenseId);
     getAllExpenses();
+  }
+
+  void updateSorting({required bool date, required bool amount}) async {
+    emit(state.copyWith(sortDateAscending: date, sortAmountAscending: amount));
+    await getAllExpenses();
   }
 }

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$StatsState {
 
- List<ExpenseDto> get listOfExpenses; bool get isCallingApi;
+ List<ExpenseDto> get listOfExpenses; bool get isCallingApi; bool get sortDateAscending; bool get sortAmountAscending; List<ExpenseCategoriesDto> get filteredListOfCategories;
 /// Create a copy of StatsState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $StatsStateCopyWith<StatsState> get copyWith => _$StatsStateCopyWithImpl<StatsSt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is StatsState&&const DeepCollectionEquality().equals(other.listOfExpenses, listOfExpenses)&&(identical(other.isCallingApi, isCallingApi) || other.isCallingApi == isCallingApi));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is StatsState&&const DeepCollectionEquality().equals(other.listOfExpenses, listOfExpenses)&&(identical(other.isCallingApi, isCallingApi) || other.isCallingApi == isCallingApi)&&(identical(other.sortDateAscending, sortDateAscending) || other.sortDateAscending == sortDateAscending)&&(identical(other.sortAmountAscending, sortAmountAscending) || other.sortAmountAscending == sortAmountAscending)&&const DeepCollectionEquality().equals(other.filteredListOfCategories, filteredListOfCategories));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(listOfExpenses),isCallingApi);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(listOfExpenses),isCallingApi,sortDateAscending,sortAmountAscending,const DeepCollectionEquality().hash(filteredListOfCategories));
 
 @override
 String toString() {
-  return 'StatsState(listOfExpenses: $listOfExpenses, isCallingApi: $isCallingApi)';
+  return 'StatsState(listOfExpenses: $listOfExpenses, isCallingApi: $isCallingApi, sortDateAscending: $sortDateAscending, sortAmountAscending: $sortAmountAscending, filteredListOfCategories: $filteredListOfCategories)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $StatsStateCopyWith<$Res>  {
   factory $StatsStateCopyWith(StatsState value, $Res Function(StatsState) _then) = _$StatsStateCopyWithImpl;
 @useResult
 $Res call({
- List<ExpenseDto> listOfExpenses, bool isCallingApi
+ List<ExpenseDto> listOfExpenses, bool isCallingApi, bool sortDateAscending, bool sortAmountAscending, List<ExpenseCategoriesDto> filteredListOfCategories
 });
 
 
@@ -65,11 +65,14 @@ class _$StatsStateCopyWithImpl<$Res>
 
 /// Create a copy of StatsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? listOfExpenses = null,Object? isCallingApi = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? listOfExpenses = null,Object? isCallingApi = null,Object? sortDateAscending = null,Object? sortAmountAscending = null,Object? filteredListOfCategories = null,}) {
   return _then(_self.copyWith(
 listOfExpenses: null == listOfExpenses ? _self.listOfExpenses : listOfExpenses // ignore: cast_nullable_to_non_nullable
 as List<ExpenseDto>,isCallingApi: null == isCallingApi ? _self.isCallingApi : isCallingApi // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,sortDateAscending: null == sortDateAscending ? _self.sortDateAscending : sortDateAscending // ignore: cast_nullable_to_non_nullable
+as bool,sortAmountAscending: null == sortAmountAscending ? _self.sortAmountAscending : sortAmountAscending // ignore: cast_nullable_to_non_nullable
+as bool,filteredListOfCategories: null == filteredListOfCategories ? _self.filteredListOfCategories : filteredListOfCategories // ignore: cast_nullable_to_non_nullable
+as List<ExpenseCategoriesDto>,
   ));
 }
 
@@ -154,10 +157,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<ExpenseDto> listOfExpenses,  bool isCallingApi)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<ExpenseDto> listOfExpenses,  bool isCallingApi,  bool sortDateAscending,  bool sortAmountAscending,  List<ExpenseCategoriesDto> filteredListOfCategories)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _StatsState() when $default != null:
-return $default(_that.listOfExpenses,_that.isCallingApi);case _:
+return $default(_that.listOfExpenses,_that.isCallingApi,_that.sortDateAscending,_that.sortAmountAscending,_that.filteredListOfCategories);case _:
   return orElse();
 
 }
@@ -175,10 +178,10 @@ return $default(_that.listOfExpenses,_that.isCallingApi);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<ExpenseDto> listOfExpenses,  bool isCallingApi)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<ExpenseDto> listOfExpenses,  bool isCallingApi,  bool sortDateAscending,  bool sortAmountAscending,  List<ExpenseCategoriesDto> filteredListOfCategories)  $default,) {final _that = this;
 switch (_that) {
 case _StatsState():
-return $default(_that.listOfExpenses,_that.isCallingApi);case _:
+return $default(_that.listOfExpenses,_that.isCallingApi,_that.sortDateAscending,_that.sortAmountAscending,_that.filteredListOfCategories);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -195,10 +198,10 @@ return $default(_that.listOfExpenses,_that.isCallingApi);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<ExpenseDto> listOfExpenses,  bool isCallingApi)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<ExpenseDto> listOfExpenses,  bool isCallingApi,  bool sortDateAscending,  bool sortAmountAscending,  List<ExpenseCategoriesDto> filteredListOfCategories)?  $default,) {final _that = this;
 switch (_that) {
 case _StatsState() when $default != null:
-return $default(_that.listOfExpenses,_that.isCallingApi);case _:
+return $default(_that.listOfExpenses,_that.isCallingApi,_that.sortDateAscending,_that.sortAmountAscending,_that.filteredListOfCategories);case _:
   return null;
 
 }
@@ -210,7 +213,7 @@ return $default(_that.listOfExpenses,_that.isCallingApi);case _:
 @JsonSerializable()
 
 class _StatsState extends StatsState {
-  const _StatsState({final  List<ExpenseDto> listOfExpenses = const [], this.isCallingApi = false}): _listOfExpenses = listOfExpenses,super._();
+  const _StatsState({final  List<ExpenseDto> listOfExpenses = const [], this.isCallingApi = false, this.sortDateAscending = false, this.sortAmountAscending = false, final  List<ExpenseCategoriesDto> filteredListOfCategories = const []}): _listOfExpenses = listOfExpenses,_filteredListOfCategories = filteredListOfCategories,super._();
   factory _StatsState.fromJson(Map<String, dynamic> json) => _$StatsStateFromJson(json);
 
  final  List<ExpenseDto> _listOfExpenses;
@@ -221,6 +224,15 @@ class _StatsState extends StatsState {
 }
 
 @override@JsonKey() final  bool isCallingApi;
+@override@JsonKey() final  bool sortDateAscending;
+@override@JsonKey() final  bool sortAmountAscending;
+ final  List<ExpenseCategoriesDto> _filteredListOfCategories;
+@override@JsonKey() List<ExpenseCategoriesDto> get filteredListOfCategories {
+  if (_filteredListOfCategories is EqualUnmodifiableListView) return _filteredListOfCategories;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_filteredListOfCategories);
+}
+
 
 /// Create a copy of StatsState
 /// with the given fields replaced by the non-null parameter values.
@@ -235,16 +247,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StatsState&&const DeepCollectionEquality().equals(other._listOfExpenses, _listOfExpenses)&&(identical(other.isCallingApi, isCallingApi) || other.isCallingApi == isCallingApi));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StatsState&&const DeepCollectionEquality().equals(other._listOfExpenses, _listOfExpenses)&&(identical(other.isCallingApi, isCallingApi) || other.isCallingApi == isCallingApi)&&(identical(other.sortDateAscending, sortDateAscending) || other.sortDateAscending == sortDateAscending)&&(identical(other.sortAmountAscending, sortAmountAscending) || other.sortAmountAscending == sortAmountAscending)&&const DeepCollectionEquality().equals(other._filteredListOfCategories, _filteredListOfCategories));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_listOfExpenses),isCallingApi);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_listOfExpenses),isCallingApi,sortDateAscending,sortAmountAscending,const DeepCollectionEquality().hash(_filteredListOfCategories));
 
 @override
 String toString() {
-  return 'StatsState(listOfExpenses: $listOfExpenses, isCallingApi: $isCallingApi)';
+  return 'StatsState(listOfExpenses: $listOfExpenses, isCallingApi: $isCallingApi, sortDateAscending: $sortDateAscending, sortAmountAscending: $sortAmountAscending, filteredListOfCategories: $filteredListOfCategories)';
 }
 
 
@@ -255,7 +267,7 @@ abstract mixin class _$StatsStateCopyWith<$Res> implements $StatsStateCopyWith<$
   factory _$StatsStateCopyWith(_StatsState value, $Res Function(_StatsState) _then) = __$StatsStateCopyWithImpl;
 @override @useResult
 $Res call({
- List<ExpenseDto> listOfExpenses, bool isCallingApi
+ List<ExpenseDto> listOfExpenses, bool isCallingApi, bool sortDateAscending, bool sortAmountAscending, List<ExpenseCategoriesDto> filteredListOfCategories
 });
 
 
@@ -272,11 +284,14 @@ class __$StatsStateCopyWithImpl<$Res>
 
 /// Create a copy of StatsState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? listOfExpenses = null,Object? isCallingApi = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? listOfExpenses = null,Object? isCallingApi = null,Object? sortDateAscending = null,Object? sortAmountAscending = null,Object? filteredListOfCategories = null,}) {
   return _then(_StatsState(
 listOfExpenses: null == listOfExpenses ? _self._listOfExpenses : listOfExpenses // ignore: cast_nullable_to_non_nullable
 as List<ExpenseDto>,isCallingApi: null == isCallingApi ? _self.isCallingApi : isCallingApi // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,sortDateAscending: null == sortDateAscending ? _self.sortDateAscending : sortDateAscending // ignore: cast_nullable_to_non_nullable
+as bool,sortAmountAscending: null == sortAmountAscending ? _self.sortAmountAscending : sortAmountAscending // ignore: cast_nullable_to_non_nullable
+as bool,filteredListOfCategories: null == filteredListOfCategories ? _self._filteredListOfCategories : filteredListOfCategories // ignore: cast_nullable_to_non_nullable
+as List<ExpenseCategoriesDto>,
   ));
 }
 

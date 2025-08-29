@@ -13,10 +13,20 @@ _StatsState _$StatsStateFromJson(Map<String, dynamic> json) => _StatsState(
           .toList() ??
       const [],
   isCallingApi: json['isCallingApi'] as bool? ?? false,
+  sortDateAscending: json['sortDateAscending'] as bool? ?? false,
+  sortAmountAscending: json['sortAmountAscending'] as bool? ?? false,
+  filteredListOfCategories:
+      (json['filteredListOfCategories'] as List<dynamic>?)
+          ?.map((e) => ExpenseCategoriesDto.fromJson(e as Map<String, dynamic>))
+          .toList() ??
+      const [],
 );
 
 Map<String, dynamic> _$StatsStateToJson(_StatsState instance) =>
     <String, dynamic>{
       'listOfExpenses': instance.listOfExpenses,
       'isCallingApi': instance.isCallingApi,
+      'sortDateAscending': instance.sortDateAscending,
+      'sortAmountAscending': instance.sortAmountAscending,
+      'filteredListOfCategories': instance.filteredListOfCategories,
     };

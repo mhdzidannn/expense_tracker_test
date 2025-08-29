@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:expense_tracker_test/database/sync/expenses_database.dart';
 import 'package:expense_tracker_test/modules/expenses/dto/expenses_dto.dart';
 import 'package:injectable/injectable.dart';
@@ -26,13 +28,10 @@ class ExpensesController {
   }
 
   Future<ExpenseDto?> updateExpense(ExpenseDto expense) async {
-    print(expense.id);
     final fromDb = await database.findExactOne(Finder(filter: Filter.equals('id', expense.id)));
-    print('fromDb $fromDb');
     if (fromDb == null) return null;
 
     final updated = expense.copyWith(updatedAt: DateTime.now().toUtc());
-    print('updated $updated');
     await database.update(updated.toJson(), Finder(filter: Filter.equals('id', expense.id)));
     return updated;
   }
@@ -65,6 +64,7 @@ class ExpensesController {
       final expense = ExpenseDto.fromJson(record.value as Map<String, dynamic>);
       expenses[expense.id!] = expense;
     }
+    log('expenses.values.toList ${expenses.values.toList()}');
     return expenses.values.toList();
   }
 

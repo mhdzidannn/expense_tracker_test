@@ -113,6 +113,7 @@ class AddExpensePage extends HookWidget {
                           children: [
                             SizedBox(width: 10),
                             Icon(Icons.price_change, size: 20.sp, color: Colors.deepPurple),
+                            Icon(Icons.arrow_downward, size: 18.sp, color: Colors.deepPurple),
                             Text(' ${expenseState.selectedCurrency?.symbol} ', style: TextStyle(fontSize: 18.sp)),
                           ],
                         ),

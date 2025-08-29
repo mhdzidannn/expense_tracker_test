@@ -2,6 +2,7 @@ import 'package:expense_tracker_test/generated/l10n.dart';
 import 'package:expense_tracker_test/misc/hooks.dart';
 import 'package:expense_tracker_test/misc/misc.dart';
 import 'package:expense_tracker_test/modules/stats/component/delete_expense_dialog.dart';
+import 'package:expense_tracker_test/modules/stats/component/sort_dialog.dart';
 import 'package:expense_tracker_test/modules/stats/dto/expense_item_dto.dart';
 
 import 'package:expense_tracker_test/modules/stats/state/stats_state.dart';
@@ -34,7 +35,26 @@ class StatsPage extends HookWidget {
           slivers: [
             CupertinoSliverNavigationBar(
               heroTag: 'stats',
-              largeTitle: Text(Tr.current.yourExpenses),
+              largeTitle: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(Tr.current.yourExpenses),
+                  Row(
+                    children: [
+                      IconButton(
+                        icon: const Icon(Icons.filter_list, color: Colors.deepPurple),
+                        onPressed: () {},
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.sort_outlined, color: Colors.deepPurple),
+                        onPressed: () {
+                          showDialog(context: context, builder: (context) => SortDialog());
+                        },
+                      ),
+                    ],
+                  ),
+                ],
+              ),
               backgroundColor: Colors.white,
             ),
 
@@ -63,7 +83,6 @@ class StatsPage extends HookWidget {
                 }
 
                 final groupedItems = state.buildGroupedExpenses;
-
                 return SliverList(
                   delegate: SliverChildBuilderDelegate((context, index) {
                     final item = groupedItems[index];
