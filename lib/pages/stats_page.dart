@@ -147,8 +147,8 @@ class StatsPage extends HookWidget {
                           subtitle: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(formatDayMonthYear(expense.selectedDate)),
                               if (expense.expensesName != null) Text(expense.expensesName ?? ''),
+                              Text(formatDayMonthYear(expense.selectedDate)),
                             ],
                           ),
                           title: Text(expense.selectedExpense.name),
