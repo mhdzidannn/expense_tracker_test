@@ -2,6 +2,7 @@ import 'package:expense_tracker_test/generated/l10n.dart';
 import 'package:expense_tracker_test/misc/hooks.dart';
 import 'package:expense_tracker_test/misc/misc.dart';
 import 'package:expense_tracker_test/modules/stats/component/delete_expense_dialog.dart';
+import 'package:expense_tracker_test/modules/stats/component/filter_categories_dialog.dart';
 import 'package:expense_tracker_test/modules/stats/component/sort_dialog.dart';
 import 'package:expense_tracker_test/modules/stats/dto/expense_item_dto.dart';
 
@@ -43,7 +44,13 @@ class StatsPage extends HookWidget {
                     children: [
                       IconButton(
                         icon: const Icon(Icons.filter_list, color: Colors.deepPurple),
-                        onPressed: () {},
+                        onPressed: () {
+                          showModalBottomSheet(
+                            context: context,
+                            isScrollControlled: true,
+                            builder: (context) => CategoryFilterChips(),
+                          );
+                        },
                       ),
                       IconButton(
                         icon: const Icon(Icons.sort_outlined, color: Colors.deepPurple),

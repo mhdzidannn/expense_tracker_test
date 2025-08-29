@@ -21,31 +21,27 @@ abstract class StatsState with _$StatsState {
 
   factory StatsState.fromJson(Map<String, dynamic> json) => _$StatsStateFromJson(json);
 
-  Map<DateTime, List<ExpenseDto>> get groupExpensesByMonth {
-    final Map<DateTime, List<ExpenseDto>> grouped = {};
+  List<ExpenseItemDto> get buildGroupedExpenses {
+    final filteredExpenses = filteredListOfCategories.isEmpty
+        ? listOfExpenses
+        : listOfExpenses.where((e) => filteredListOfCategories.contains(e.selectedExpense)).toList();
 
-    for (final exp in listOfExpenses) {
-      final monthKey = DateTime(exp.selectedDate.year, exp.selectedDate.month);
-      grouped.putIfAbsent(monthKey, () => []).add(exp);
+    final grouped = <DateTime, List<ExpenseDto>>{};
+    for (final expense in filteredExpenses) {
+      final key = DateTime(expense.selectedDate.year, expense.selectedDate.month);
+      grouped.putIfAbsent(key, () => []).add(expense);
     }
 
-    return grouped;
-  }
-
-  List<ExpenseItemDto> get buildGroupedExpenses {
+    final sortedKeys = grouped.keys.toList()..sort((a, b) => sortDateAscending ? a.compareTo(b) : b.compareTo(a));
     final items = <ExpenseItemDto>[];
-
-    final sortedKeys = groupExpensesByMonth.keys.toList()
-      ..sort((a, b) => sortDateAscending ? a.compareTo(b) : b.compareTo(a));
-
     for (final monthKey in sortedKeys) {
       items.add(ExpenseItemDto.header(formatMonthYear(monthKey)));
+      final monthExpenses = [...grouped[monthKey]!];
+      monthExpenses.sort((a, b) => sortAmountAscending ? a.amount.compareTo(b.amount) : b.amount.compareTo(a.amount));
 
-      final expenses = [...groupExpensesByMonth[monthKey]!]
-        ..sort((a, b) => sortAmountAscending ? a.amount.compareTo(b.amount) : b.amount.compareTo(a.amount));
-
-      items.addAll(expenses.map(ExpenseItemDto.expense));
+      items.addAll(monthExpenses.map(ExpenseItemDto.expense));
     }
+
     return items;
   }
 }

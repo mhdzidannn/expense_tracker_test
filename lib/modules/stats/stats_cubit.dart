@@ -1,5 +1,6 @@
 import 'package:expense_tracker_test/database/modules/expenses_controller.dart';
 import 'package:expense_tracker_test/modules/stats/state/stats_state.dart';
+import 'package:expense_tracker_test/repository/expenses/dto/expense_categories_dto.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -30,6 +31,11 @@ class StatsCubit extends Cubit<StatsState> {
 
   void updateSorting({required bool date, required bool amount}) async {
     emit(state.copyWith(sortDateAscending: date, sortAmountAscending: amount));
+    await getAllExpenses();
+  }
+
+  void updateFilter({required List<ExpenseCategoriesDto> updated}) async {
+    emit(state.copyWith(filteredListOfCategories: updated));
     await getAllExpenses();
   }
 }

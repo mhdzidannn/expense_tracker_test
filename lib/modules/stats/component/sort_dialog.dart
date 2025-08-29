@@ -18,6 +18,7 @@ class SortDialog extends HookWidget {
     useEffect(() {
       sortDateAscending.value = state.sortDateAscending;
       sortAmountAscending.value = state.sortAmountAscending;
+      return null;
     }, [null]);
 
     return Dialog(
