@@ -75,7 +75,7 @@ class StatsPage extends HookWidget {
               backgroundColor: Colors.white,
             ),
 
-            if (statsState.listOfExpenses.isNotEmpty && !statsState.isCallingApi) ...{
+            if (context.read<StatsCubit>().buildGroupedExpenses.isNotEmpty && !statsState.isCallingApi) ...{
               SliverToBoxAdapter(child: TransactionsPieChart()),
             },
 
@@ -85,7 +85,8 @@ class StatsPage extends HookWidget {
                   return SliverFillRemaining(child: Center(child: CircularProgressIndicator()));
                 }
 
-                if (state.listOfExpenses.isEmpty) {
+                final groupedItems = context.read<StatsCubit>().buildGroupedExpenses;
+                if (groupedItems.isEmpty) {
                   return SliverFillRemaining(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -103,7 +104,6 @@ class StatsPage extends HookWidget {
                   );
                 }
 
-                final groupedItems = context.read<StatsCubit>().buildGroupedExpenses;
                 return SliverList(
                   delegate: SliverChildBuilderDelegate((context, index) {
                     final item = groupedItems[index];
