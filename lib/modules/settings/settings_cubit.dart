@@ -33,10 +33,6 @@ class SettingsCubit extends Cubit<SettingsState> {
     );
     currentBudget ??= await budgetController.update(MonthlyBudgetDto.defaultBudget());
     final budgetList = await budgetController.getAllBudget();
-
-    print('budgetList $budgetList');
-    print('currentBudget $currentBudget');
-
     emit(
       state.copyWith(
         expensesCategories: categories,
@@ -58,5 +54,12 @@ class SettingsCubit extends Cubit<SettingsState> {
   Future<void> setMonthlyExpense({required MonthlyBudgetDto monthlyBudget}) async {
     await budgetController.update(monthlyBudget);
     updateSettingsState();
+  }
+
+  MonthlyBudgetDto getBudgetDto(DateTime input) {
+    return state.monthlyBudgetList.firstWhere(
+      (budget) => budget.month == input.month && budget.year == input.year,
+      orElse: () => MonthlyBudgetDto.defaultBudget(),
+    );
   }
 }

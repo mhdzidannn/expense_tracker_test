@@ -101,9 +101,9 @@ class StatsPage extends HookWidget {
                       ],
                     ),
                   );
-                } else {}
+                }
 
-                final groupedItems = state.buildGroupedExpenses;
+                final groupedItems = context.read<StatsCubit>().buildGroupedExpenses;
                 return SliverList(
                   delegate: SliverChildBuilderDelegate((context, index) {
                     final item = groupedItems[index];

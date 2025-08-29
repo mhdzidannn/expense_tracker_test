@@ -44,26 +44,6 @@ abstract class StatsState with _$StatsState {
     return filteredByTime;
   }
 
-  List<ExpenseItemDto> get buildGroupedExpenses {
-    final grouped = <DateTime, List<ExpenseDto>>{};
-    for (final expense in filteredExpenses) {
-      final key = DateTime(expense.selectedDate.year, expense.selectedDate.month);
-      grouped.putIfAbsent(key, () => []).add(expense);
-    }
-
-    final sortedKeys = grouped.keys.toList()..sort((a, b) => sortDateAscending ? a.compareTo(b) : b.compareTo(a));
-    final items = <ExpenseItemDto>[];
-    for (final monthKey in sortedKeys) {
-      items.add(ExpenseItemDto.header(formatMonthYear(monthKey)));
-      final monthExpenses = [...grouped[monthKey]!];
-      monthExpenses.sort((a, b) => sortAmountAscending ? a.amount.compareTo(b.amount) : b.amount.compareTo(a.amount));
-
-      items.addAll(monthExpenses.map(ExpenseItemDto.expense));
-    }
-
-    return items;
-  }
-
   List<PieChartMapper> get pieChartMappers {
     final categoryTotals = <String, double>{};
     final categoryColors = <String, int>{};
