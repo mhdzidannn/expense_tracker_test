@@ -12,6 +12,7 @@ _ExpenseCategoriesDto _$ExpenseCategoriesDtoFromJson(
   name: json['name'] as String,
   recommendedPercentage: (json['recommendedPercentage'] as num?)?.toDouble(),
   isFixed: json['isFixed'] as bool? ?? true,
+  hexCodeColor: (json['hexCodeColor'] as num?)?.toInt(),
 );
 
 Map<String, dynamic> _$ExpenseCategoriesDtoToJson(
@@ -20,4 +21,5 @@ Map<String, dynamic> _$ExpenseCategoriesDtoToJson(
   'name': instance.name,
   'recommendedPercentage': instance.recommendedPercentage,
   'isFixed': instance.isFixed,
+  'hexCodeColor': instance.hexCodeColor,
 };

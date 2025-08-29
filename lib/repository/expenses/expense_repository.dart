@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:expense_tracker_test/misc/random.dart';
 import 'package:expense_tracker_test/repository/expenses/dto/expense_categories_dto.dart';
 import 'package:expense_tracker_test/repository/result.dart';
 import 'package:http/http.dart' as http;
@@ -18,9 +19,11 @@ class ExpenseRepository {
       if (response.statusCode == 200) {
         try {
           final decoded = jsonDecode(response.body) as Map<String, dynamic>;
-          final list = (decoded['expenseCategories'] as List<dynamic>)
-              .map((e) => ExpenseCategoriesDto.fromJson(e as Map<String, dynamic>))
-              .toList();
+          final list = (decoded['expenseCategories'] as List<dynamic>).map((e) {
+            final dto = ExpenseCategoriesDto.fromJson(e as Map<String, dynamic>);
+            // print(dto.copyWith(hexCodeColor: randomMaterialColor()));
+            return dto.copyWith(hexCodeColor: randomMaterialColor());
+          }).toList();
 
           return RepoSuccess(list);
         } on FormatException {

@@ -1,7 +1,12 @@
 import 'package:expense_tracker_test/misc/misc.dart';
+import 'package:expense_tracker_test/misc/random.dart';
 import 'package:expense_tracker_test/modules/expenses/dto/expenses_dto.dart';
+import 'package:expense_tracker_test/modules/stats/component/indicator.dart';
 import 'package:expense_tracker_test/modules/stats/dto/expense_item_dto.dart';
+import 'package:expense_tracker_test/modules/stats/dto/pie_chart_mapper.dart';
 import 'package:expense_tracker_test/repository/expenses/dto/expense_categories_dto.dart';
+import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'stats_state.freezed.dart';
@@ -23,7 +28,7 @@ abstract class StatsState with _$StatsState {
 
   factory StatsState.fromJson(Map<String, dynamic> json) => _$StatsStateFromJson(json);
 
-  List<ExpenseItemDto> get buildGroupedExpenses {
+  List<ExpenseDto> get filteredExpenses {
     final filteredExpenses = filteredListOfCategories.isEmpty
         ? listOfExpenses
         : listOfExpenses.where((e) => filteredListOfCategories.contains(e.selectedExpense)).toList();
@@ -36,9 +41,12 @@ abstract class StatsState with _$StatsState {
 
             return matchesMonth && matchesYear;
           }).toList();
+    return filteredByTime;
+  }
 
+  List<ExpenseItemDto> get buildGroupedExpenses {
     final grouped = <DateTime, List<ExpenseDto>>{};
-    for (final expense in filteredByTime) {
+    for (final expense in filteredExpenses) {
       final key = DateTime(expense.selectedDate.year, expense.selectedDate.month);
       grouped.putIfAbsent(key, () => []).add(expense);
     }
@@ -54,5 +62,47 @@ abstract class StatsState with _$StatsState {
     }
 
     return items;
+  }
+
+  List<PieChartMapper> get pieChartMappers {
+    final categoryTotals = <String, double>{};
+    final categoryColors = <String, int>{};
+
+    for (final expense in filteredExpenses) {
+      final category = expense.selectedExpense.name;
+      categoryTotals[category] = (categoryTotals[category] ?? 0) + expense.amount;
+      categoryColors[category] = expense.selectedExpense.hexCodeColor ?? randomMaterialColor();
+    }
+
+    return categoryTotals.entries.map((entry) {
+      return PieChartMapper(
+        categoryName: entry.key,
+        categoryValue: entry.value,
+        categoryColor: categoryColors[entry.key]!,
+      );
+    }).toList();
+  }
+
+  List<PieChartSectionData> get pieChartData {
+    final total = pieChartMappers.fold<double>(0.0, (sum, item) => sum + item.categoryValue);
+
+    return pieChartMappers.map((mapper) {
+      final percentage = total == 0 ? 0 : (mapper.categoryValue / total) * 100;
+
+      return PieChartSectionData(
+        value: mapper.categoryValue,
+        title: '${percentage.toStringAsFixed(1)}%',
+        color: Color(mapper.categoryColor),
+        radius: 65,
+        showTitle: true,
+        titleStyle: TextStyle(fontWeight: FontWeight.bold),
+      );
+    }).toList();
+  }
+
+  List<Indicator> get indicators {
+    return pieChartMappers.map((mapper) {
+      return Indicator(color: Color(mapper.categoryColor), isSquare: false, text: mapper.categoryName);
+    }).toList();
   }
 }

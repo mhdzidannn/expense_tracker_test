@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ExpenseCategoriesDto {
 
- String get name; double? get recommendedPercentage; bool get isFixed;
+ String get name; double? get recommendedPercentage; bool get isFixed; int? get hexCodeColor;
 /// Create a copy of ExpenseCategoriesDto
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -28,16 +28,16 @@ $ExpenseCategoriesDtoCopyWith<ExpenseCategoriesDto> get copyWith => _$ExpenseCat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExpenseCategoriesDto&&(identical(other.name, name) || other.name == name)&&(identical(other.recommendedPercentage, recommendedPercentage) || other.recommendedPercentage == recommendedPercentage)&&(identical(other.isFixed, isFixed) || other.isFixed == isFixed));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ExpenseCategoriesDto&&(identical(other.name, name) || other.name == name)&&(identical(other.recommendedPercentage, recommendedPercentage) || other.recommendedPercentage == recommendedPercentage)&&(identical(other.isFixed, isFixed) || other.isFixed == isFixed)&&(identical(other.hexCodeColor, hexCodeColor) || other.hexCodeColor == hexCodeColor));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,recommendedPercentage,isFixed);
+int get hashCode => Object.hash(runtimeType,name,recommendedPercentage,isFixed,hexCodeColor);
 
 @override
 String toString() {
-  return 'ExpenseCategoriesDto(name: $name, recommendedPercentage: $recommendedPercentage, isFixed: $isFixed)';
+  return 'ExpenseCategoriesDto(name: $name, recommendedPercentage: $recommendedPercentage, isFixed: $isFixed, hexCodeColor: $hexCodeColor)';
 }
 
 
@@ -48,7 +48,7 @@ abstract mixin class $ExpenseCategoriesDtoCopyWith<$Res>  {
   factory $ExpenseCategoriesDtoCopyWith(ExpenseCategoriesDto value, $Res Function(ExpenseCategoriesDto) _then) = _$ExpenseCategoriesDtoCopyWithImpl;
 @useResult
 $Res call({
- String name, double? recommendedPercentage, bool isFixed
+ String name, double? recommendedPercentage, bool isFixed, int? hexCodeColor
 });
 
 
@@ -65,12 +65,13 @@ class _$ExpenseCategoriesDtoCopyWithImpl<$Res>
 
 /// Create a copy of ExpenseCategoriesDto
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? recommendedPercentage = freezed,Object? isFixed = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? recommendedPercentage = freezed,Object? isFixed = null,Object? hexCodeColor = freezed,}) {
   return _then(_self.copyWith(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,recommendedPercentage: freezed == recommendedPercentage ? _self.recommendedPercentage : recommendedPercentage // ignore: cast_nullable_to_non_nullable
 as double?,isFixed: null == isFixed ? _self.isFixed : isFixed // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,hexCodeColor: freezed == hexCodeColor ? _self.hexCodeColor : hexCodeColor // ignore: cast_nullable_to_non_nullable
+as int?,
   ));
 }
 
@@ -155,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  double? recommendedPercentage,  bool isFixed)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  double? recommendedPercentage,  bool isFixed,  int? hexCodeColor)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ExpenseCategoriesDto() when $default != null:
-return $default(_that.name,_that.recommendedPercentage,_that.isFixed);case _:
+return $default(_that.name,_that.recommendedPercentage,_that.isFixed,_that.hexCodeColor);case _:
   return orElse();
 
 }
@@ -176,10 +177,10 @@ return $default(_that.name,_that.recommendedPercentage,_that.isFixed);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  double? recommendedPercentage,  bool isFixed)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  double? recommendedPercentage,  bool isFixed,  int? hexCodeColor)  $default,) {final _that = this;
 switch (_that) {
 case _ExpenseCategoriesDto():
-return $default(_that.name,_that.recommendedPercentage,_that.isFixed);case _:
+return $default(_that.name,_that.recommendedPercentage,_that.isFixed,_that.hexCodeColor);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +197,10 @@ return $default(_that.name,_that.recommendedPercentage,_that.isFixed);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  double? recommendedPercentage,  bool isFixed)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  double? recommendedPercentage,  bool isFixed,  int? hexCodeColor)?  $default,) {final _that = this;
 switch (_that) {
 case _ExpenseCategoriesDto() when $default != null:
-return $default(_that.name,_that.recommendedPercentage,_that.isFixed);case _:
+return $default(_that.name,_that.recommendedPercentage,_that.isFixed,_that.hexCodeColor);case _:
   return null;
 
 }
@@ -211,12 +212,13 @@ return $default(_that.name,_that.recommendedPercentage,_that.isFixed);case _:
 
 @JsonSerializable(explicitToJson: true)
 class _ExpenseCategoriesDto implements ExpenseCategoriesDto {
-  const _ExpenseCategoriesDto({required this.name, this.recommendedPercentage, this.isFixed = true});
+  const _ExpenseCategoriesDto({required this.name, this.recommendedPercentage, this.isFixed = true, this.hexCodeColor});
   factory _ExpenseCategoriesDto.fromJson(Map<String, dynamic> json) => _$ExpenseCategoriesDtoFromJson(json);
 
 @override final  String name;
 @override final  double? recommendedPercentage;
 @override@JsonKey() final  bool isFixed;
+@override final  int? hexCodeColor;
 
 /// Create a copy of ExpenseCategoriesDto
 /// with the given fields replaced by the non-null parameter values.
@@ -231,16 +233,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ExpenseCategoriesDto&&(identical(other.name, name) || other.name == name)&&(identical(other.recommendedPercentage, recommendedPercentage) || other.recommendedPercentage == recommendedPercentage)&&(identical(other.isFixed, isFixed) || other.isFixed == isFixed));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ExpenseCategoriesDto&&(identical(other.name, name) || other.name == name)&&(identical(other.recommendedPercentage, recommendedPercentage) || other.recommendedPercentage == recommendedPercentage)&&(identical(other.isFixed, isFixed) || other.isFixed == isFixed)&&(identical(other.hexCodeColor, hexCodeColor) || other.hexCodeColor == hexCodeColor));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,name,recommendedPercentage,isFixed);
+int get hashCode => Object.hash(runtimeType,name,recommendedPercentage,isFixed,hexCodeColor);
 
 @override
 String toString() {
-  return 'ExpenseCategoriesDto(name: $name, recommendedPercentage: $recommendedPercentage, isFixed: $isFixed)';
+  return 'ExpenseCategoriesDto(name: $name, recommendedPercentage: $recommendedPercentage, isFixed: $isFixed, hexCodeColor: $hexCodeColor)';
 }
 
 
@@ -251,7 +253,7 @@ abstract mixin class _$ExpenseCategoriesDtoCopyWith<$Res> implements $ExpenseCat
   factory _$ExpenseCategoriesDtoCopyWith(_ExpenseCategoriesDto value, $Res Function(_ExpenseCategoriesDto) _then) = __$ExpenseCategoriesDtoCopyWithImpl;
 @override @useResult
 $Res call({
- String name, double? recommendedPercentage, bool isFixed
+ String name, double? recommendedPercentage, bool isFixed, int? hexCodeColor
 });
 
 
@@ -268,12 +270,13 @@ class __$ExpenseCategoriesDtoCopyWithImpl<$Res>
 
 /// Create a copy of ExpenseCategoriesDto
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? recommendedPercentage = freezed,Object? isFixed = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? recommendedPercentage = freezed,Object? isFixed = null,Object? hexCodeColor = freezed,}) {
   return _then(_ExpenseCategoriesDto(
 name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
 as String,recommendedPercentage: freezed == recommendedPercentage ? _self.recommendedPercentage : recommendedPercentage // ignore: cast_nullable_to_non_nullable
 as double?,isFixed: null == isFixed ? _self.isFixed : isFixed // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,hexCodeColor: freezed == hexCodeColor ? _self.hexCodeColor : hexCodeColor // ignore: cast_nullable_to_non_nullable
+as int?,
   ));
 }
 

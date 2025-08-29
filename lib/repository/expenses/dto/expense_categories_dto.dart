@@ -10,6 +10,7 @@ abstract class ExpenseCategoriesDto with _$ExpenseCategoriesDto {
     required String name,
     double? recommendedPercentage,
     @Default(true) bool isFixed,
+    int? hexCodeColor,
   }) = _ExpenseCategoriesDto;
 
   factory ExpenseCategoriesDto.fromJson(Map<String, dynamic> json) => _$ExpenseCategoriesDtoFromJson(json);
